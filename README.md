@@ -11,10 +11,10 @@
 ## 🛠️ Guia Do Projeto
 
 1. **Configuração do Ambiente React**
-   Consulte as [Anotações de Construção do Ambiente React](https://www.notion.so/Anota-es-de-Constru-o-do-Ambiente-Spring-1459f9faccaa814ba5a1de81077ca5c0?pvs=21) para configurar o ambiente.
+   Consulte as [Anotações de Construção do Ambiente React](https://www.notion.so/) para configurar o ambiente.
 
 2. **Figma Layout**
-  Consulte o [Figma](https://www.figma.com/design/qyyP7NAxYQ74uK41qh5LK9/GerenciadorApp?node-id=21-2804&t=nAeJJDPrkRKrucpz-1) para acompanhar as lógicas e detalhes para o desenvolvimento do layout do projeto, vizualizar as telas e todas as referências.
+  Consulte o [Figma](https://www.figma.com/proto/XUZWuNBTbnuKuykmDIUwI1/Web-Design---Planner?node-id=1-170&p=f&t=qKflVOi0q6ukzsnE-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A170) para acompanhar as lógicas e detalhes para o desenvolvimento do layout do projeto, vizualizar as telas e todas as referências.
 
 ---
 
