@@ -4,7 +4,7 @@
 
 # 📹 Clique na imagem acima para assistir ao video caso realmente se interesse pelos materiais referentes ao projeto.
 
-[![Mix All](https://github.com/user-attachments/)](https://www.figma.com/proto/qyyP7NAxYQ74uK41qh5LK9/GerenciadorApp?node-id=21-2804&t=cfufQFOyWlgCrMvc-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1)
+[![Image](https://github.com/user-attachments/assets/c8b3a042-eb1e-4e9c-926f-7ec54900676c)](https://www.figma.com/proto/XUZWuNBTbnuKuykmDIUwI1/Web-Design---Planner?node-id=1-170&p=f&t=qKflVOi0q6ukzsnE-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A170)
 
 # 🖼️ Clique na imagem acima para acessar o projeto Figma.
 
