@@ -1,46 +1,77 @@
-# Getting Started with Create React App
+# CRUD React - Planner Financeiro
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![Image](https://github.com/user-attachments/assets/c03e1b79-bbf5-4c28-ba46-3ccb90a91028)](https://youtu.be/ewg-YlAz2FQ?si=LIQaHb)
 
-## Available Scripts
+# 📹 Clique na imagem acima para assistir ao video caso realmente se interesse pelos materiais referentes ao projeto.
 
-In the project directory, you can run:
+[![Image](https://github.com/user-attachments/assets/c8b3a042-eb1e-4e9c-926f-7ec54900676c)](https://www.figma.com/proto/XUZWuNBTbnuKuykmDIUwI1/Web-Design---Planner?node-id=1-170&p=f&t=qKflVOi0q6ukzsnE-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A170)
 
-### `npm start`
+# 🖼️ Clique na imagem acima para acessar o projeto Figma.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 🛠️ Guia Do Projeto
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. **Configuração do Ambiente React**
+   Consulte as [Anotações de Construção do Ambiente React](https://www.notion.so/Anota-es-de-Constru-o-do-Ambiente-Spring-1459f9faccaa814ba5a1de81077ca5c0?pvs=21) para configurar o ambiente.
 
-### `npm test`
+2. **Figma Layout**
+  Consulte o [Figma](https://www.figma.com/design/qyyP7NAxYQ74uK41qh5LK9/GerenciadorApp?node-id=21-2804&t=nAeJJDPrkRKrucpz-1) para acompanhar as lógicas e detalhes para o desenvolvimento do layout do projeto, vizualizar as telas e todas as referências.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 📋 Sobre o Projeto
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Este projeto foi criado solucionar economias pessoais, com base na melhoria da organização, vizualização e armazenamento dos dados pessoais financeiros. Contemplando resoluções de problemas, qualidade de código com clareza de soluções.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Objetivos Futuros do Projeto
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Construir a API** de cadastro persistentes com funcionalidades completas.
+- **Trabalhar com múltiplos relacionamentos** entre entidades.
+- **Aplicar boas práticas** em modelagem de dados e organização do código.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**Acesse o ReadMe Principal**
+Acesse o [ReadMe Principal](https://github.com/AlineSilv/GerenciadorCheckIn/blob/main/README.md) para acompanhar as requisições de planejamento e produção que envolvem os requisitos que condicionam do projeto.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+ **Acesse o ReadMe do Front End**
+   Acesse o [ReadMe do Front End](https://github.com/AlineSilv/GerenciadorCheckIn/blob/main/front/README.md) para compreensão dos detalhes técnicos que sucedem a clonagem e implementação do mesmo.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+ **Acesse o ReadMe do Back End**
+   Acesse o [ReadMe do Back End](https://github.com/AlineSilv/GerenciadorCheckIn/blob/main/crud/README.md) para compreensão de detalhes técnicos que implicam a clonagem e implementação do Back End.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+O objetivo técnico é consolidar conhecimentos, abordar práticas de modelagem de dados e criar uma API robusta utilizando as tecnologias de ecossistemas que me familiarizo.
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 📚 Tecnologias e Conceitos Aplicados
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 🔑 Linguagem e Frameworks
+- **JavaScript e TypeScript**
+- **React Framework**
+  - Styled Components
+  - React Router DOM
+
+### 📌 Outros Conceitos
+- Figma
+- UI / UX
+
+---
+
+## 📂 Estrutura do Projeto
+
+( Ainda em estágio de Frontend com estrutura padrão do React. )
+
+---
+
+## 📄 Referências e Materiais de Apoio
+
+
+---
+
+## 👩‍💻 Autor(a)
+
+**Aline A. Silva**  
+Graduanda em Ciência da Computação - 6º Período  
+☕ Estudando Java pela EBAC  
+[LinkedIn](http://www.linkedin.com/in/alinealv-silv) | [GitHub](https://github.com/AlineSilv)
+
+---
