@@ -30,13 +30,10 @@ Este projeto foi criado solucionar economias pessoais, com base na melhoria da o
 
 
 **Acesse o ReadMe Principal**
-Acesse o [ReadMe Principal](https://github.com/AlineSilv/GerenciadorCheckIn/blob/main/README.md) para acompanhar as requisições de planejamento e produção que envolvem os requisitos que condicionam do projeto.
+Acesse o [ReadMe Principal](https://github.com/AlineSilv/CRUD-Planner-React/blob/main/README.md) para acompanhar as requisições de planejamento e produção que envolvem os requisitos que condicionam do projeto.
 
  **Acesse o ReadMe do Front End**
-   Acesse o [ReadMe do Front End](https://github.com/AlineSilv/GerenciadorCheckIn/blob/main/front/README.md) para compreensão dos detalhes técnicos que sucedem a clonagem e implementação do mesmo.
-
- **Acesse o ReadMe do Back End**
-   Acesse o [ReadMe do Back End](https://github.com/AlineSilv/GerenciadorCheckIn/blob/main/crud/README.md) para compreensão de detalhes técnicos que implicam a clonagem e implementação do Back End.
+   Acesse o [ReadMe do Front End](https://github.com/AlineSilv/CRUD-Planner-React/blob/main/src/README.md) para compreensão dos detalhes técnicos que sucedem a clonagem e implementação do mesmo.
 
 O objetivo técnico é consolidar conhecimentos, abordar práticas de modelagem de dados e criar uma API robusta utilizando as tecnologias de ecossistemas que me familiarizo.
 
