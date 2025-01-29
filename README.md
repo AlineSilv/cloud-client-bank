@@ -1,6 +1,6 @@
-# ☕ CRUD React - Planner Financeiro
+# CRUD React - Planner Financeiro
 
-[![ThumbnailVideo](https://github.com/user-attachments)](https://youtu.be/ewg-YlAz2FQ?si=LIQaHb)
+[![ThumbnailVideo](https://github.com/AlineSilv/CRUD_Planner_React/issues/2#issue-2819013035)](https://youtu.be/ewg-YlAz2FQ?si=LIQaHb)
 
 # 📹 Clique na imagem acima para assistir ao video caso realmente se interesse pelos materiais referentes ao projeto.
 
