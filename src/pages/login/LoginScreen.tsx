@@ -23,7 +23,7 @@ import {
   ImgAsideLogin,
   Content,
   IconSocial
-} from './LoginStyles.tsx';
+} from './LoginStyles.ts';
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -38,8 +38,8 @@ const Login: React.FC = () => {
       const isAuthenticated = await fakeAuth(username, password);
       
       if (isAuthenticated) {
-        localStorage.setItem("fake_token", "token_value"); // Corrigido
-        navigate("/home"); // Redirecionamento correto
+        localStorage.setItem("fake_token", "token_value"); 
+        navigate("/home");
       } else {
         setError("Usuário e/ou senha incorretos.");
       }
@@ -54,7 +54,7 @@ const Login: React.FC = () => {
     <ContentScreen>
       <Content>
         <BoxLogo>
-          <Logo src="./assets/TelaLogin/logo_pig.png" alt="logo image" />
+          <Logo src="./assets/TelaLogin/softwareone-logo.svg" alt="logo image" />
         </BoxLogo>
         <ContainerLogin>
           <BoxWelcome>
@@ -91,31 +91,14 @@ const Login: React.FC = () => {
           </form>
           <BoxAccount>
             <p>
-              <TextAccount>Ainda não possui uma conta?</TextAccount>
+              <TextAccount>Ainda não possui uma conta? </TextAccount>
               <TextAccountBold as="a" href="/register">Saiba mais</TextAccountBold>
             </p>
           </BoxAccount>
-          <BoxIcons>
-            <IconSpace>
-              <a href="#">
-                <IconSocial src="./assets/TelaLogin/social_media_icons_fcbk.png" alt="Facebook" />
-              </a>
-            </IconSpace>
-            <IconSpace>
-              <a href="#">
-                <IconSocial src="./assets/TelaLogin/social_media_icons_wpp.png" alt="WhatsApp" />
-              </a>
-            </IconSpace>
-            <IconSpace>
-              <a href="#">
-                <IconSocial src="./assets/TelaLogin/social_media_icons_tlg.png" alt="Telegram" />
-              </a>
-            </IconSpace>
-          </BoxIcons>
         </ContainerLogin>
       </Content>
       <AsideTarja>
-        <ImgAsideLogin src="./assets/TelaLogin/background_line.png" alt="Illustration background" />
+        <ImgAsideLogin src="./assets/TelaLogin/cloudapp-login-bckg-screen.png" alt="Illustration background" />
       </AsideTarja>
     </ContentScreen>
   );

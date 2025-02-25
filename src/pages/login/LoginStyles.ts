@@ -33,6 +33,7 @@ export const ContainerLogin = styled.div`
 `;
 
 export const Logo = styled.img`
+  margin-top:5%;
   width:15%;
   align-content: flex-start;
   padding-left: 10%;
@@ -48,7 +49,7 @@ export const BoxWelcome = styled.div`
 `;
 
 export const TextWelcome = styled.div`
-  color: #252f40;
+  color:black;
   font-weight: 800;
   text-align: center;
   font-size:16px;
@@ -66,7 +67,7 @@ export const BoxLabel = styled.div`
 `;
 
 export const LabelLogin = styled.div`
-  color: #252f64;
+  color:black;
 `;
 
 export const BoxInput = styled.div`
@@ -77,8 +78,8 @@ export const BoxInput = styled.div`
 export const InputLogin = styled.input`
   width: 60%;
   border-radius: 20px;
-  border: 1px solid #252f64;
-  color: #252f64;
+  border: 1px solid;
+  color:rgb(0, 0, 0);
   height: 30px;
   text-align: left;
   font-family: 'Poppins', sans-serif;
@@ -102,9 +103,9 @@ export const ButtonLogin = styled.button`
   color:white;
   font-size: 16px;
   font-weight: 600;
-  background-color: #252f64;
+  background-color:rgb(0, 0, 0);
   border-radius: 20px;
-  border: 1px solid #252f64;
+  border: 1px solid;
   height: 30px;
   cursor: pointer;
 
@@ -126,7 +127,7 @@ export const BoxAccount = styled.div`
 `;
 
 export const TextAccount = styled.span`
-  color: #252f40;
+  color:rgb(0, 0, 0);
 
   @media (max-width: 768px) {
     text-align: center;
@@ -135,13 +136,13 @@ export const TextAccount = styled.span`
 `;
 
 export const TextAccountBold = styled.a`
-  color: #252f40;
+  color:rgb(0, 0, 0);
   font-weight: 800;
   text-decoration: none;
 `;
 
 export const BoxIcons = styled.div`
-  color: #252f64;
+  color:rgb(0, 0, 0);
   text-align: center;
   white-space: nowrap;
   padding-top: 2%;
@@ -158,6 +159,7 @@ export const AsideTarja = styled.div`
 `;
 
 export const ImgAsideLogin = styled.img`
+  filter: grayscale(100%);
   display: block;
   height:630px;
   padding:0;
@@ -172,7 +174,7 @@ export const ImgAsideLogin = styled.img`
   }
   @media (max-width: 1150px) {
   heigh:500px;
-  width:400px;
+  width:500px;
   }
    @media (max-width: 768px) {
     display:none;
