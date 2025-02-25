@@ -17,7 +17,7 @@ margin-left:25%;
 `;
 
 export const ImgLogo = styled.img`
-width:15%;
+width:10%;
 `;
 
 export const BoxForm = styled.div``;
@@ -26,7 +26,7 @@ export const BoxInstruct = styled.div``;
 
 export const TextWelcome = styled.p`
   padding-left: 20%;
-  color: #252f40;
+  color:rgb(0, 0, 0);
   font-size:16px;
   font-weight: 800;
 `;
@@ -35,7 +35,7 @@ export const LabelForm = styled.div`
   padding-top: 15px;
   padding-bottom: 10px;
   font-weight: 100;
-  color: #252f40;
+  color:rgb(0, 0, 0);
 `;
 
 export const BoxInput = styled.div``;
@@ -87,7 +87,7 @@ export const ButtonForm = styled.button`
   padding-bottom: 8px;
   margin-bottom:5%;
   border-radius: 10px;
-  background-color: #24126A;
+  background-color:rgb(0, 0, 0);
   color: #FFFF;
   font-weight: 800;
 `;
@@ -98,8 +98,9 @@ export const ContentIllustration = styled.div`
 `;
 
 export const ImgIllustration = styled.img`
-  height:800px;
-   width:550px;
+  filter: grayscale(100%);
+  height:600px;
+  width:550px;
   padding:0;
   margin:0;
 
@@ -126,7 +127,7 @@ export const BoxAccount = styled.div`
 `;
 
 export const TextAccount = styled.span`
-  color: #252f40;
+  color:rgb(0, 0, 0);
   font-size:16px;
   @media (max-width: 768px) {
     text-align: center;
@@ -135,7 +136,7 @@ export const TextAccount = styled.span`
 `;
 
 export const TextAccountBold = styled.a`
-  color: #252f40;
+  color:rgb(0, 0, 0);
   font-weight: 800;
   font-size:16px;
   text-decoration: none;
