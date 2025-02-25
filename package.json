@@ -1,7 +1,7 @@
 {
   "name": "cloudclientbank",
   "version": "0.1.0",
-  "homepage": "https://alinesilv.github.io/cloud-client-bank",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",

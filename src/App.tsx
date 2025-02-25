@@ -6,11 +6,12 @@ import Error from './pages/errorScreen/ErrorScreen.tsx';
 import Home from './pages/home/Home.tsx'
 import Dashboard from './pages/dashboard/Dashboard.tsx'
 
+const basename = window.location.hostname === 'localhost' ? '' : '/cloud-client-bank';
+
 function App() {
   return (
-    <Router>
+    <Router basename={basename}>
       <Routes>
-
         {/* Rota para a página Principal */}
         <Route path="/home" element={<Home />} />
 

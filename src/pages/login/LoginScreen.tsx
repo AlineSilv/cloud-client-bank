@@ -17,12 +17,9 @@ import {
   BoxAccount,
   TextAccount,
   TextAccountBold,
-  BoxIcons,
-  IconSpace,
   AsideTarja,
   ImgAsideLogin,
-  Content,
-  IconSocial
+  Content
 } from './LoginStyles.ts';
 
 const Login: React.FC = () => {

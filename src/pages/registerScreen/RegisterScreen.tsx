@@ -33,20 +33,12 @@ function Register() {
             <TextWelcome>Preencha seus dados:</TextWelcome>
           </BoxInstruct>
           <form>
-          <LabelForm>Nome completo:</LabelForm>
+          <LabelForm>Nome:</LabelForm>
             <BoxInput>
               <InputForm
                 type="text"
                 placeholder="User" />
             </BoxInput>
-            <BoxLabel>
-              <LabelForm>Celular com DDD:</LabelForm>
-            </BoxLabel>
-              <BoxInput>
-              <InputForm
-                  type="text"
-                  placeholder="(00) 010101010" />
-              </BoxInput>
               <BoxLabel>
               <LabelForm>E-mail:</LabelForm>
             </BoxLabel>
@@ -76,7 +68,7 @@ function Register() {
             </BoxButton>
             <BoxAccount>
               <p>
-                <TextAccount>Já possui uma conta?</TextAccount>
+                <TextAccount>Já possui uma conta? </TextAccount>
                 <TextAccountBold as="a" href="/">Logar</TextAccountBold>
               </p>
             </BoxAccount>

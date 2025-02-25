@@ -83,8 +83,7 @@ export const ButtonForm = styled.button`
   font-size: 16px;
   border: none;
   height: 30px;
-  padding-top: 5px;
-  padding-bottom: 8px;
+  padding-bottom: 5px;
   margin-bottom:5%;
   border-radius: 10px;
   background-color:rgb(0, 0, 0);
