@@ -14,17 +14,17 @@ export const RowHeader = styled.div`
 export const BoxLogo = styled.div`
   width: 250px;
   margin-left: 35px;
-  padding-top:20px;
+  margin-top:30px;
   @media (max-width: 1200px) {
   width: 180px;
   padding-bottom: 0;
-  margin-bottom:-15px;
   order:1;
   }
 `;
 
 export const Logo = styled.img`
  max-width:100px;
+ cursor:pointer;
 `;
 
 export const HeaderMenuBar =styled.div`
@@ -188,28 +188,7 @@ export const ContentAside = styled.div`
 `;
 
 export const IconDashboard = styled.img`
-  box-shadow: 2px 4px 5px rgb(197, 197, 197);
-  border-radius: 10px;
-`;
-
-export const IconConfVendas = styled.img`
-  box-shadow: 2px 4px 5px rgb(197, 197, 197);
-  border-radius: 10px;
-`;
-
-export const IconAuditVendas = styled.img`
-  box-shadow: 2px 4px 5px rgb(197, 197, 197);
-  border-radius: 10px;
-`;
-
-export const IconConciliFinanceira = styled.img`
-  box-shadow: 2px 4px 5px rgb(197, 197, 197);
-  border-radius: 10px;
-`;
-
-export const IconPrevisaoRecebiveis = styled.img`
-  box-shadow: 2px 4px 5px rgb(197, 197, 197);
-  border-radius: 10px;
+  opacity:0.5;
 `;
 
 export const WindowsAside = styled.div`
@@ -225,7 +204,7 @@ export const WindowsAside = styled.div`
 
 export const BoxIconTitle = styled.div`
   font-size: 16px;
-  color: #252f64;
+  color:rgb(0, 0, 0);
   font-weight: 500;
   padding-left: 7%;
   padding-top: 8px;
@@ -238,61 +217,30 @@ export const BoxIconTitle = styled.div`
 
 export const BoxIconTitleDash = styled.div`
   font-size: 16px;
-  color: #252f64;
+  color:#9999;
   font-weight: 500;
   padding-left: 7%;
-  padding-top: 8px;
   align-items: center;
   text-align: center;
   white-space: nowrap;
-  margin-top: 9px;
+  margin-top: 15px;
 `;
 
 export const BoxIconDash = styled.div`
   display: flex;
   flex-direction: row;
+  background: none;
+  background-color: transparent;
+  cursor:pointer;
 
   &:hover {
-    width:280px;
+    width:200px;
     background-color: #ffffff;
     border-radius: 10px;
   }
 `;
 
-export const BoxIconConfVendas = styled.div`
-  display: flex;
-  flex-direction: row;
-
-  &:hover {
-    width:280px;
-    background-color: #ffffff;
-    border-radius: 10px;
-  }
-`;
-
-export const BoxIconAuditVendas = styled.div`
-  display: flex;
-  flex-direction: row;
-
-  &:hover {
-    width:280px;
-    background-color: #ffffff;
-    border-radius: 10px;
-  }
-`;
-
-export const BoxIconConciliFinanceira = styled.div`
-  display: flex;
-  flex-direction: row;
-
-  &:hover {
-    width:280px;
-    background-color: #ffffff;
-    border-radius: 10px;
-  }
-`;
-
-export const BoxIconPrevisaoRecebiveis = styled.div`
+export const BoxIcon = styled.div`
   display: flex;
   flex-direction: row;
 
@@ -306,10 +254,10 @@ export const BoxIconPrevisaoRecebiveis = styled.div`
 export const ContainerHelp = styled.div`
   height: auto;
   margin-top: 55%;
-  width: 225px;
+  width: 200px;
   margin-left: 20px;
   border-radius: 12%;
-  background-color: #252f64;
+  background-color:rgb(0, 0, 0);
   color: #ffffff;
   font-size: 16px;
   display: flex;
@@ -323,7 +271,9 @@ export const BoxIconHelp = styled.div`
   padding-left: 9%;
 `;
 
-export const IconHelp = styled.img``;
+export const IconHelp = styled.img`
+filter: grayscale(100%);
+`;
 
 export const TextBoxHelp = styled.p`
   padding-left: 9%;
@@ -344,14 +294,14 @@ export const BoxButtonContact = styled.div`
 `;
 
 export const ButtonContact = styled.div`
-  width: 180px;
+  width: 140px;
   height: 30px;
-  padding-top: 5%;
+  padding-top: 10%;
   border-radius: 8px;
   border: none;
   font-size: 16px;
   background-color: #ffffff;
-  color: #252f64;
+  color:rgb(0, 0, 0);
   font-weight: 600;
   text-align: center;
 `;
