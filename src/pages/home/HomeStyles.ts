@@ -50,76 +50,6 @@ export const LabelInstruct = styled.p`
   padding-right: 4%;
 `;
 
-export const LabelInstructBlack = styled.span`
-
-color:black;
-`;
-export const CompanySelect = styled.select`
-  -webkit-appearance: none; 
-  -moz-appearance: none;
-  appearance: none; 
-  background-color: #FFF;
-  border: 1px solid #cccc;
-  font-family: "Poppins", sans-serif;
-  font-size: 16px;
-  color: #ccc;
-  opacity:0.7;
-  outline: none; 
-  cursor: pointer;
-  width:350px;
-  height: 40px;
-  padding-left: 35px; 
-  margin-lef:100px;
-  margin-right:30px;
-  border-radius: 8px;
-  background-image: url("../../assets/Navbar/icon-input-header-chevron.svg");
-  background-position:1% center;
-  background-repeat: no-repeat;
-  background-size: 30px 15px; 
-
-  &::placeholder {
-    padding-right:5px;
-    color: #888;
-  }
-
-  option {
-    border:none;
-    border-radius:10px;
-    background-color: #FFFF;
-    opacity:0.6;
-    color: #888;
-  }
-
-  option:checked {
-    border:none;
-    border-radius:10px;
-    background-color: #ccc;
-    color: #333;
-    opacity:0.6;
-  }
-`;
-
-export  const InputSelectDate = styled.input`
-  border: 1px solid #ccc;
-  height: 40px;
-  width:250px;
-  padding-left: 30px; 
-  border-radius: 8px;
-  outline: none; 
-  opacity:0.7;
-  background-image: url("../../assets/Navbar/icon-input-header-calendar.svg");
-  background-position:1% center;
-  background-repeat: no-repeat;
-  background-size: 30px 20px; 
-
-&::placeholder{
-  padding-left: 2%;
-  font-size: 16px;
-  color: #ccc;
-  font-weight: 510;
-}
-`;
-
 export const MenuConfig = styled.div`
 margin-left:20%;
 margin-top:20px;
@@ -187,7 +117,7 @@ export const ContentAside = styled.div`
   }
 `;
 
-export const IconDashboard = styled.img`
+export const IconButton = styled.img`
   opacity:0.5;
 `;
 
@@ -204,29 +134,16 @@ export const WindowsAside = styled.div`
 
 export const BoxIconTitle = styled.div`
   font-size: 16px;
-  color:rgb(0, 0, 0);
-  font-weight: 500;
-  padding-left: 7%;
-  padding-top: 8px;
-  align-items: center;
-  text-align: center;
-  white-space: nowrap;
-  margin-top: 9px;
-  transition: all 1s;
-`;
-
-export const BoxIconTitleDash = styled.div`
-  font-size: 16px;
   color:#9999;
   font-weight: 500;
   padding-left: 7%;
   align-items: center;
   text-align: center;
   white-space: nowrap;
-  margin-top: 15px;
+  margin-top: 12px;
 `;
 
-export const BoxIconDash = styled.div`
+export const BoxIcon = styled.div`
   display: flex;
   flex-direction: row;
   background: none;
@@ -235,17 +152,6 @@ export const BoxIconDash = styled.div`
 
   &:hover {
     width:200px;
-    background-color: #ffffff;
-    border-radius: 10px;
-  }
-`;
-
-export const BoxIcon = styled.div`
-  display: flex;
-  flex-direction: row;
-
-  &:hover {
-    width:280px;
     background-color: #ffffff;
     border-radius: 10px;
   }

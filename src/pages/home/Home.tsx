@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import {
   ContentScreen,
@@ -11,9 +12,9 @@ import {
   IconMenuConfig,
   IconMenuNotification,
   ContentAside,
-  IconDashboard,
+  IconButton,
   WindowsAside,
-  BoxIconDash,
+  BoxIcon,
   ContainerHelp,
   BoxIconHelp,
   IconHelp,
@@ -21,13 +22,13 @@ import {
   TextBoldHelp,
   BoxButtonContact,
   ButtonContact,
-  BoxIconTitleDash,
+  BoxIconTitle,
   
 } from "./HomeStyles.ts";
 
 function Home() {
   const [isAsideVisible, setIsAsideVisible] = useState(false);
-
+  const navigate = useNavigate();
   return (
       <ContentScreen>
         <RowHeader>
@@ -38,7 +39,7 @@ function Home() {
             <IconMenuNotification>
                 <img
                   src='./assets/Navbar/icon-header-menu-config-notification.svg'
-                  style={{ width: 25, height: 20 }}
+                  style={{ width: 25, height: 20 }} alt="alerts"
                 ></img>
             </IconMenuNotification>
             <IconMenuConfig>
@@ -51,7 +52,7 @@ function Home() {
             <IconUser>
             <img
               src='./assets/Navbar/UserCircle.svg'
-              style={{ width: 25, height: 20 }}
+              style={{ width: 25, height: 20 }} alt="usuario"
               ></img><p>Aline</p>
             </IconUser>
             </MenuConfig>
@@ -59,14 +60,22 @@ function Home() {
         <ContentAside style={{ display: isAsideVisible ? "block" : "none" }}
         onMouseLeave={() => setIsAsideVisible(false)}>
           <WindowsAside>
-              <BoxIconDash>
-                <IconDashboard
-                  style={{ width: 25, height: 25 }}
+              <BoxIcon onClick={() => navigate("/dashboard")} style={{ cursor: "pointer" }}>
+                <IconButton
+                  style={{ width: 20, height: 20 }}
                   src='./assets/Navbar/icon-graph.png'
                   alt="ícone Dashboard"
                 />
-                <BoxIconTitleDash>Dashboard</BoxIconTitleDash>
-              </BoxIconDash>
+                <BoxIconTitle>Dashboard</BoxIconTitle>
+              </BoxIcon>
+              <BoxIcon onClick={() => navigate("/tabela")} style={{ cursor: "pointer" }}>
+                <IconButton
+                  style={{ width: 20, height: 20 }}
+                  src='./assets/Navbar/icon-table.png'
+                  alt="ícone Tabela"
+                />
+                <BoxIconTitle>Tabela</BoxIconTitle>
+              </BoxIcon>
           </WindowsAside>
           <ContainerHelp>
             <BoxIconHelp>
@@ -82,7 +91,7 @@ function Home() {
               Fale conosco!
             </TextBoxHelp>
             <BoxButtonContact>
-              <a href="#">
+              <a href="https://www.softwareone.com/pt-br/entre-em-contato">
                 <ButtonContact>Clique aqui</ButtonContact>
               </a>
             </BoxButtonContact>

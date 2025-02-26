@@ -17,14 +17,14 @@ import {
 
 const relatoryComponents: Record<string, any> = {
   "#": lazy(() => import("../relatory/EmptyRelatory.tsx")),
-  "AMIs": lazy(() => import("../relatory/RelatoryAMIs.tsx")),
-  "EBSSnapshots": lazy(() => import("../relatory/RelatoryEBSSnapshots.tsx")),
-  "EBS": lazy(() => import("../relatory/RelatoryEBSVolumes.tsx")),
-  "EC2": lazy(() => import("../relatory/RelatoryEC2Instances.tsx")),
-  "ElasticIP": lazy(() => import("../relatory/RelatoryElasticIPs.tsx")),
-  "RDS": lazy(() => import("../relatory/RelatoryRDSInstances.tsx")),
-  "RDSSnapshots": lazy(() => import("../relatory/RelatoryRDSSnapshots.tsx")),
-  "S3": lazy(() => import("../relatory/RelatoryS3Buckets.tsx")),
+  "AMIs": lazy(() => import("../relatory/table/RelatoryAMIs.tsx")),
+  "EBSSnapshots": lazy(() => import("../relatory/table/RelatoryEBSSnapshots.tsx")),
+  "EBS": lazy(() => import("../relatory/table/RelatoryEBSVolumes.tsx")),
+  "EC2": lazy(() => import("../relatory/table/RelatoryEC2Instances.tsx")),
+  "ElasticIP": lazy(() => import("../relatory/table/RelatoryElasticIPs.tsx")),
+  "RDS": lazy(() => import("../relatory/table/RelatoryRDSInstances.tsx")),
+  "RDSSnapshots": lazy(() => import("../relatory/table/RelatoryRDSSnapshots.tsx")),
+  "S3": lazy(() => import("../relatory/table/RelatoryS3Buckets.tsx")),
 };
 
 function Home() {
@@ -66,7 +66,7 @@ function Home() {
   return (
     <ContentScreen>
       <RowHeader>
-        <BoxLogo><Logo src='./assets/TelaLogin/softwareone-logo.svg'/></BoxLogo>
+        <BoxLogo><Logo src='./assets/TelaLogin/softwareone-logo.svg' alt="logo"/></BoxLogo>
         <HeaderMenuBar>
           <LabelInstruct> Instâncias / <LabelInstructBlack>{selectedInstance || ""}</LabelInstructBlack></LabelInstruct>
           <InstanceSelect value={selectedInstance} onChange={(e) => handleFilterChange(e.target.value)}> 
@@ -83,13 +83,13 @@ function Home() {
         </HeaderMenuBar>
         <MenuConfig>
           <IconMenuNotification>
-            <img src='./assets/Navbar/icon-header-menu-config-notification.svg' style={{ width: 25, height: 20 }} />
+            <img src='./assets/Navbar/icon-header-menu-config-notification.svg' alt="alertas" style={{ width: 25, height: 20 }} />
           </IconMenuNotification>
           <IconMenuConfig>
-            <img src='./assets/Navbar/TreePoints.svg' style={{ width: 40, height: 25 }} alt=""/>
+            <img src='./assets/Navbar/TreePoints.svg' alt="menu" style={{ width: 40, height: 25 }} />
           </IconMenuConfig>
           <IconUser>
-            <img src='./assets/Navbar/UserCircle.svg' style={{ width: 25, height: 20 }} />
+            <img src='./assets/Navbar/UserCircle.svg' alt="usuario" style={{ width: 25, height: 20 }} />
             <p>Aline</p>
           </IconUser>
         </MenuConfig>

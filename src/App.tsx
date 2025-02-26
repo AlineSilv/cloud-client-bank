@@ -5,7 +5,7 @@ import Register from './pages/registerScreen/RegisterScreen.tsx';
 import Error from './pages/errorScreen/ErrorScreen.tsx';
 import Home from './pages/home/Home.tsx'
 import Dashboard from './pages/dashboard/Dashboard.tsx'
-
+import Relatory from './pages/relatory/EmptyRelatory.tsx'
 const basename = window.location.hostname === 'localhost' ? '' : '/cloud-client-bank';
 
 function App() {
@@ -23,6 +23,9 @@ function App() {
         
         {/* Rota para a página de Dashboard */}
         <Route path="/dashboard" element={<Dashboard />} />
+
+        {/* Rota para a página de Tabela */}
+        <Route path="/tabela" element={<Relatory />} />
         
         {/* Rota para exibir a página de erro (404) */}
         <Route path="*" element={<Error />} />

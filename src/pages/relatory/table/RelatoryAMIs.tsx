@@ -9,7 +9,7 @@ import {
   TableWrapper,
   Th,
   Td
-} from "./RelatoryStyles.ts";
+} from "./TableStyles.ts";
 
 interface AMIs {
   Account: string;

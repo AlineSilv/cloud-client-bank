@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import {
   Container,
   Table,
@@ -9,33 +9,33 @@ import {
   TableWrapper,
   Th,
   Td
-} from "./RelatoryStyles.ts";
+} from "./TableStyles.ts";
 
-interface RDSSnapshots {
+interface EBSSnapshot {
   Account: string;
   Region: string;
   SnapshotID: string;
-  DBInstanceID: string;
+  VolumeID: string;
   SizeGB: number;
-  Status: string;
-  CreateTime: string;
+  StartTime: string;
+  State: string;
 }
 
-interface RelatoryRDSSnapshotsProps {
-  data: RDSSnapshots[];
+interface RelatoryEBSSnapshotsProps {
+  data: EBSSnapshot[];
 }
 
-const RelatoryRDSSnapshots: React.FC<RelatoryRDSSnapshotsProps> = ({ data }) => {
-  const itemsPerPage = 10;
+const RelatoryEBSSnapshots: React.FC<RelatoryEBSSnapshotsProps> = ({ data }) => {
+  const itemsPerPage = 15; 
   const [currentPage, setCurrentPage] = useState(1);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
   const totalPages = Math.ceil(data.length / itemsPerPage);
-  
+
   return (
     <Container>
-      <h2>Relatório de RDS Snapshots</h2>
+      <h2>Relatório de EBS Snapshots</h2>
       <TableWrapper>
       <Table>
         <Thead>
@@ -43,22 +43,22 @@ const RelatoryRDSSnapshots: React.FC<RelatoryRDSSnapshotsProps> = ({ data }) => 
             <Th>Account</Th>
             <Th>Region</Th>
             <Th>Snapshot ID</Th>
-            <Th>DB Instance ID</Th>
-            <Th>Size GB</Th>
-            <Th>Status</Th>
-            <Th>Create Time</Th>
+            <Th>Volume ID</Th>
+            <Th>Size (GB)</Th>
+            <Th>Start Time</Th>
+            <Th>State</Th>
           </Tr>
         </Thead>
         <tbody>
-          {currentItems.map((snapshot, index) => (
-            <Tr key={index}>
+          {currentItems.map((snapshot) => (
+            <Tr key={snapshot.SnapshotID}>
               <Td>{snapshot.Account}</Td>
               <Td>{snapshot.Region}</Td>
               <Td>{snapshot.SnapshotID}</Td>
-              <Td>{snapshot.DBInstanceID}</Td>
+              <Td>{snapshot.VolumeID}</Td>
               <Td>{snapshot.SizeGB}</Td>
-              <Td>{snapshot.Status}</Td>
-              <Td>{snapshot.CreateTime}</Td>
+              <Td>{new Date(snapshot.StartTime).toLocaleDateString()}</Td>
+              <Td>{snapshot.State}</Td>
             </Tr>
           ))}
         </tbody>
@@ -80,9 +80,9 @@ const RelatoryRDSSnapshots: React.FC<RelatoryRDSSnapshotsProps> = ({ data }) => 
             Próximo
           </PaginationButton>
         </PaginationContainer>
-        )}
+      )}
     </Container>
   );
 };
 
-export default RelatoryRDSSnapshots;
+export default RelatoryEBSSnapshots;

@@ -9,47 +9,53 @@ import {
   TableWrapper,
   Th,
   Td
-} from "./RelatoryStyles.ts";
+} from "./TableStyles.ts";
 
-interface ElasticIP {
+interface S3 {
   Account: string;
-  PublicIP: string;
+  BucketName: string;
   Region: string;
-  InstanceID: string;
+  LifecycleRules: boolean;
+  SizeBytes: number;
+  StorageClass: string;
 }
 
-interface RelatoryElasticIPsProps {
-  data: ElasticIP[];
+interface RelatoryS3BucketsProps {
+  data: S3[];
 }
 
-const RelatoryElasticIPs: React.FC<RelatoryElasticIPsProps> = ({ data }) => {
+const RelatoryS3Buckets: React.FC<RelatoryS3BucketsProps> = ({ data }) => {
   const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
   const totalPages = Math.ceil(data.length / itemsPerPage);
-
+    
   return (
     <Container>
-      <h2>Relatório de Elastic IPs</h2>
+      <h2>Relatório de S3 Buckets</h2>
       <TableWrapper>
       <Table>
         <Thead>
           <Tr>
             <Th>Account</Th>
-            <Th>Elastic IP</Th>
+            <Th>Bucket Name</Th>
             <Th>Region</Th>
-            <Th>Instance ID</Th>
+            <Th>Lifecycle Rules</Th>
+            <Th>Size (Bytes)</Th>
+            <Th>Storage Class</Th>
           </Tr>
         </Thead>
         <tbody>
-          {currentItems.map((ip, index) => (
+          {currentItems.map((bucket, index) => (
             <Tr key={index}>
-              <Td>{ip.Account}</Td>
-              <Td>{ip.PublicIP}</Td>
-              <Td>{ip.Region}</Td>
-              <Td>{ip.InstanceID}</Td>
+              <Td>{bucket.Account}</Td>
+              <Td>{bucket.BucketName}</Td>
+              <Td>{bucket.Region}</Td>
+              <Td>{bucket.LifecycleRules ? "Configurado" : "Não Configurado"}</Td>
+              <Td>{bucket.SizeBytes}</Td>
+              <Td>{bucket.StorageClass}</Td>
             </Tr>
           ))}
         </tbody>
@@ -71,9 +77,9 @@ const RelatoryElasticIPs: React.FC<RelatoryElasticIPsProps> = ({ data }) => {
             Próximo
           </PaginationButton>
         </PaginationContainer>
-      )}
+        )}
     </Container>
   );
 };
 
-export default RelatoryElasticIPs;
+export default RelatoryS3Buckets;

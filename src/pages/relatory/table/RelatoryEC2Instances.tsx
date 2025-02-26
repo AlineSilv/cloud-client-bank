@@ -9,7 +9,7 @@ import {
   TableWrapper,
   Th,
   Td
-} from "./RelatoryStyles.ts";
+} from "./TableStyles.ts";
 
 interface EC2 {
   Account: string;
