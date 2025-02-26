@@ -70,7 +70,7 @@ export const InstanceSelect = styled.select`
   margin-lef:100px;
   margin-right:30px;
   border-radius: 8px;
-  background-image: url("../../assets/Navbar/icon-input-header-chevron.svg");
+  background-image: url(${`${process.env.PUBLIC_URL}/assets/Navbar/icon-input-header-chevron.svg`});
   background-position:1% center;
   background-repeat: no-repeat;
   background-size: 30px 15px; 

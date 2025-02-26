@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import {
@@ -29,52 +29,30 @@ import {
 function Home() {
   const [isAsideVisible, setIsAsideVisible] = useState(false);
   const navigate = useNavigate();
-  const [dados, setDados] = useState(null);
-
-  useEffect(() => {
-    const jsonUrl = process.env.NODE_ENV === 'development'
-      ? `${process.env.PUBLIC_URL}/recursos.json`
-      : "https://alinesilv.github.io/cloud-client-bank/recursos.json";
-
-    fetch(jsonUrl)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Erro ao carregar o JSON");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Dados carregados:", data);
-        setDados(data);
-      })
-      .catch((error) => {
-        console.error("Erro ao carregar JSON:", error);
-      });
-  }, []);
 
   return (
       <ContentScreen>
         <RowHeader>
-            <BoxLogo><Logo src='./assets/TelaLogin/softwareone-logo.svg' 
+            <BoxLogo><Logo src={`${process.env.PUBLIC_URL}/assets/TelaLogin/softwareone-logo.svg`}
             onMouseEnter={() => setIsAsideVisible(true)}/></BoxLogo>
             <HeaderMenuBar></HeaderMenuBar>
             <MenuConfig>
             <IconMenuNotification>
                 <img
-                  src='./assets/Navbar/icon-header-menu-config-notification.svg'
+                  src={`${process.env.PUBLIC_URL}/assets/Navbar/icon-header-menu-config-notification.svg`}
                   style={{ width: 25, height: 20 }} alt="alerts"
                 ></img>
             </IconMenuNotification>
             <IconMenuConfig>
               <img
-                src='./assets/Navbar/TreePoints.svg'
+                src={`${process.env.PUBLIC_URL}/assets/Navbar/TreePoints.svg`}
                 style={{ width: 40, height: 25 }}
                 alt=""
               />
             </IconMenuConfig>
             <IconUser>
             <img
-              src='./assets/Navbar/UserCircle.svg'
+              src={`${process.env.PUBLIC_URL}/assets/Navbar/UserCircle.svg`}
               style={{ width: 25, height: 20 }} alt="usuario"
               ></img><p>Aline</p>
             </IconUser>
@@ -86,7 +64,7 @@ function Home() {
               <BoxIcon onClick={() => navigate("/dashboard")} style={{ cursor: "pointer" }}>
                 <IconButton
                   style={{ width: 20, height: 20 }}
-                  src='./assets/Navbar/icon-graph.png'
+                  src={`${process.env.PUBLIC_URL}/assets/Navbar/icon-graph.png`}
                   alt="ícone Dashboard"
                 />
                 <BoxIconTitle>Dashboard</BoxIconTitle>
@@ -94,7 +72,7 @@ function Home() {
               <BoxIcon onClick={() => navigate("/tabela")} style={{ cursor: "pointer" }}>
                 <IconButton
                   style={{ width: 20, height: 20 }}
-                  src='./assets/Navbar/icon-table.png'
+                  src={`${process.env.PUBLIC_URL}/assets/Navbar/icon-table.png`}
                   alt="ícone Tabela"
                 />
                 <BoxIconTitle>Tabela</BoxIconTitle>
@@ -104,7 +82,7 @@ function Home() {
             <BoxIconHelp>
               <IconHelp
                 style={{ width: 50, height: 35 }}
-                src='./assets/Navbar/icon-box-help.svg'
+                src={`${process.env.PUBLIC_URL}/assets/Navbar/icon-box-help.svg`}
                 alt="ícone de Ajuda"
               />
             </BoxIconHelp>

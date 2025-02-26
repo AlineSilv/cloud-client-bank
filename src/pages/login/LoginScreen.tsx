@@ -29,7 +29,7 @@ const Login: React.FC = () => {
   const navigate = useNavigate();
 
   const handleLogin = async (event: React.FormEvent) => {
-    event.preventDefault(); // Previne o recarregamento da página
+    event.preventDefault();
   
     try {
       const isAuthenticated = await fakeAuth(username, password);
@@ -51,7 +51,7 @@ const Login: React.FC = () => {
     <ContentScreen>
       <Content>
         <BoxLogo>
-          <Logo src="./assets/TelaLogin/softwareone-logo.svg" alt="logo image" />
+          <Logo src={`${process.env.PUBLIC_URL}/assets/TelaLogin/softwareone-logo.svg`} alt="logo image" />
         </BoxLogo>
         <ContainerLogin>
           <BoxWelcome>
@@ -82,6 +82,11 @@ const Login: React.FC = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </BoxInput>
+            {error && (
+              <p style={{ color: 'red', textAlign: 'center', marginBottom: '10px' }}>
+                {error}
+              </p>
+            )}
             <BoxButton>
               <ButtonLogin type="submit">Login</ButtonLogin>
             </BoxButton>
@@ -95,7 +100,7 @@ const Login: React.FC = () => {
         </ContainerLogin>
       </Content>
       <AsideTarja>
-        <ImgAsideLogin src="./assets/TelaLogin/cloudapp-login-bckg-screen.png" alt="Illustration background" />
+        <ImgAsideLogin src={`${process.env.PUBLIC_URL}/assets/TelaLogin/cloudapp-login-bckg-screen.png`} alt="Illustration background" />
       </AsideTarja>
     </ContentScreen>
   );

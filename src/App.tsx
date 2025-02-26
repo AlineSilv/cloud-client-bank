@@ -28,7 +28,7 @@ function App() {
         <Route path="/tabela" element={<Relatory />} />
         
         {/* Rota para exibir a página de erro (404) */}
-        <Route path="*" element={<Error />} />
+        <Route path="/*" element={<Error />} />
       </Routes>
     </Router>
   );

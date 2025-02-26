@@ -29,26 +29,26 @@ function Error() {
       <RowHeader>
         <BoxLogo>
           <Logo 
-            src='./assets/TelaLogin/softwareone-logo.svg'/>
+            src={`${process.env.PUBLIC_URL}/assets/TelaLogin/softwareone-logo.svg`}/>
         </BoxLogo>
         <HeaderMenuBar></HeaderMenuBar>
         <MenuConfig>
           <IconMenuNotification>
             <img
-              src='./assets/Navbar/icon-header-menu-config-notification.svg'
+              src={`${process.env.PUBLIC_URL}/assets/Navbar/icon-header-menu-config-notification.svg`}
               style={{ width: 25, height: 20 }} alt="" 
             />
           </IconMenuNotification>
           <IconMenuConfig>
             <img
-              src='./assets/Navbar/TreePoints.svg'
+              src={`${process.env.PUBLIC_URL}/assets/Navbar/TreePoints.svg`}
               style={{ width: 40, height: 25 }}
               alt=""
             />
           </IconMenuConfig>
           <IconUser>
             <img
-              src='./assets/Navbar/UserCircle.svg'
+              src={`${process.env.PUBLIC_URL}/assets/Navbar/UserCircle.svg`}
               style={{ width: 25, height: 20 }} alt="" 
             />
             <p>Aline</p>
@@ -57,7 +57,7 @@ function Error() {
       </RowHeader>
       <ContainerContent>
         <ContainerIllustration>
-          <Illustration src='./assets/TelaErro/RobotError.svg' alt="" />
+          <Illustration src={`${process.env.PUBLIC_URL}/assets/TelaErro/RobotError.svg`} alt="" />
         </ContainerIllustration>
         <BoxDescription>
           <p>Ops, parece que nosso robô explorador deu um passo em falso!<br/>

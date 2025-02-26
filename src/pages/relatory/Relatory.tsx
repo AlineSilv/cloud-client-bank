@@ -32,7 +32,7 @@ function Relatory() {
   const [jsonData, setJsonData] = useState<any>({});
 
   useEffect(() => {
-    fetch("/recursos.json")
+    fetch(`${process.env.PUBLIC_URL}/recursos.json`)
       .then((response) => response.json())
       .then((data) => {
         setJsonData(data); 
@@ -66,7 +66,7 @@ function Relatory() {
   return (
     <ContentScreen>
       <RowHeader>
-        <BoxLogo><Logo src='./assets/TelaLogin/softwareone-logo.svg' alt="logo"/></BoxLogo>
+        <BoxLogo><Logo src={`${process.env.PUBLIC_URL}/assets/TelaLogin/softwareone-logo.svg`} alt="logo"/></BoxLogo>
         <HeaderMenuBar>
           <LabelInstruct> Instâncias / <LabelInstructBlack>{selectedInstance || ""}</LabelInstructBlack></LabelInstruct>
           <InstanceSelect value={selectedInstance} onChange={(e) => handleFilterChange(e.target.value)}> 
@@ -83,13 +83,13 @@ function Relatory() {
         </HeaderMenuBar>
         <MenuConfig>
           <IconMenuNotification>
-            <img src='./assets/Navbar/icon-header-menu-config-notification.svg' alt="alertas" style={{ width: 25, height: 20 }} />
+            <img src= {`${process.env.PUBLIC_URL}/assets/Navbar/icon-header-menu-config-notification.svg`} alt="alertas" style={{ width: 25, height: 20 }} />
           </IconMenuNotification>
           <IconMenuConfig>
-            <img src='./assets/Navbar/TreePoints.svg' alt="menu" style={{ width: 40, height: 25 }} />
+            <img src={`${process.env.PUBLIC_URL}/assets/Navbar/TreePoints.svg `}alt="menu" style={{ width: 40, height: 25 }} />
           </IconMenuConfig>
           <IconUser>
-            <img src='./assets/Navbar/UserCircle.svg' alt="usuario" style={{ width: 25, height: 20 }} />
+            <img src={`${process.env.PUBLIC_URL}/assets/Navbar/UserCircle.svg`} alt="usuario" style={{ width: 25, height: 20 }} />
             <p>Aline</p>
           </IconUser>
         </MenuConfig>

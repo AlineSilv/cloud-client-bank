@@ -26,7 +26,7 @@ function Register() {
     <Container>
     <ContentAsideForm>
       <BoxLogo>
-        <ImgLogo style={{ width: 200, height: 200 }} src='./assets/TelaLogin/softwareone-logo.svg' alt="Logo" />
+        <ImgLogo style={{ width: 200, height: 200 }} src={`${process.env.PUBLIC_URL}/assets/TelaLogin/softwareone-logo.svg `} alt="Logo" />
       </BoxLogo>
       <BoxForm>
           <BoxInstruct>
@@ -76,7 +76,7 @@ function Register() {
       </BoxForm>
       </ContentAsideForm>
       <ContentIllustration>
-        <ImgIllustration alt="Ilustração Artística" src='./assets/TelaLogin/cloudapp-login-bckg-blck.png'/>
+        <ImgIllustration alt="Ilustração Artística" src={`${process.env.PUBLIC_URL}/assets/TelaLogin/cloudapp-login-bckg-blck.png`}/>
         </ContentIllustration>
     </Container>
     </>
