@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import {
@@ -29,11 +29,23 @@ import {
 function Home() {
   const [isAsideVisible, setIsAsideVisible] = useState(false);
   const navigate = useNavigate();
+  const [dados, setDados] = useState(null);
 
-  fetch(`${process.env.PUBLIC_URL}/recursos.json`)
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error("Erro ao carregar JSON", error));
+  useEffect(() => {
+    fetch(`${process.env.PUBLIC_URL}/recursos.json`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Erro ao carregar o JSON");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Dados carregados:", data);
+        setDados(data);
+      })
+      .catch((error) => console.error("Erro ao carregar JSON:", error));
+  }, []); 
+
 
   return (
       <ContentScreen>
