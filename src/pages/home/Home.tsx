@@ -29,6 +29,12 @@ import {
 function Home() {
   const [isAsideVisible, setIsAsideVisible] = useState(false);
   const navigate = useNavigate();
+
+  fetch(`${process.env.PUBLIC_URL}/recursos.json`)
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Erro ao carregar JSON", error));
+
   return (
       <ContentScreen>
         <RowHeader>
