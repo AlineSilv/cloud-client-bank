@@ -5,7 +5,7 @@ import Register from './pages/registerScreen/RegisterScreen.tsx';
 import Error from './pages/errorScreen/ErrorScreen.tsx';
 import Home from './pages/home/Home.tsx'
 import Dashboard from './pages/dashboard/Dashboard.tsx'
-import Relatory from './pages/relatory/EmptyRelatory.tsx'
+import Relatory from './pages/relatory/Relatory.tsx'
 const basename = window.location.hostname === 'localhost' ? '' : '/cloud-client-bank';
 
 function App() {

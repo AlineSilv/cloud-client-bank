@@ -7,7 +7,7 @@ import {
   Description
 } from './EmptyRelatoryStyles.ts'
 
-function Relatory() {
+function EmptyRelatory() {
 
   return (
       <ContentScreen>
@@ -21,4 +21,4 @@ function Relatory() {
   );
 }
 
-export default Relatory;
+export default EmptyRelatory;
