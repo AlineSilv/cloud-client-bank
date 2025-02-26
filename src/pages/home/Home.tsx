@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import {
@@ -32,7 +32,11 @@ function Home() {
   const [dados, setDados] = useState(null);
 
   useEffect(() => {
-    fetch(`${process.env.PUBLIC_URL}/recursos.json`)
+    const jsonUrl = process.env.NODE_ENV === 'development'
+      ? `${process.env.PUBLIC_URL}/recursos.json`
+      : "https://alinesilv.github.io/cloud-client-bank/recursos.json";
+
+    fetch(jsonUrl)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Erro ao carregar o JSON");
@@ -43,9 +47,10 @@ function Home() {
         console.log("Dados carregados:", data);
         setDados(data);
       })
-      .catch((error) => console.error("Erro ao carregar JSON:", error));
-  }, []); 
-
+      .catch((error) => {
+        console.error("Erro ao carregar JSON:", error);
+      });
+  }, []);
 
   return (
       <ContentScreen>
