@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Importando o hook useNavigate
+import { useNavigate } from 'react-router-dom';
 import {
   ContentScreen,
   RowHeader,
@@ -29,7 +29,7 @@ function Error() {
       <RowHeader>
         <BoxLogo>
           <Logo 
-            src={`${process.env.PUBLIC_URL}/assets/TelaLogin/softwareone-logo.svg`}/>
+            src={`${process.env.PUBLIC_URL}/assets/TelaLogin/logo-cloud-client.png`}/>
         </BoxLogo>
         <HeaderMenuBar></HeaderMenuBar>
         <MenuConfig>

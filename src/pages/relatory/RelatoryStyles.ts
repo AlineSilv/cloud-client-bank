@@ -15,13 +15,18 @@ export const BoxLogo = styled.div`
   width: 250px;
   margin-left: 35px;
   padding-top:25px;
+
   @media (max-width: 1200px) {
-  width: 180px;
+  max-width: 100px;
   order:1;
   }
+
+  @media (max-width: 750px) {
+  display:none;
 `;
 
 export const Logo = styled.img`
+filter: grayscale(100%);
  max-width:100px;
 `;
 
@@ -30,26 +35,34 @@ export const HeaderMenuBar =styled.div`
   align-items: center;
   display: flex;
   white-space: nowrap;
+  margin-lef:100px;
+  margin-right:30px;
 
   @media (max-width: 1200px) {
     display:flex;
     width: 70%;
     display: flex;
     align-items: center;
-    padding-left: 80px;
     order: 2;
-
     }
+
+    @media (max-width: 500px) {
+    margin-right:5%;
+    }
+  
 `;
 
 export const LabelInstruct = styled.p`
   color: gray;
   padding-left: 15%;
   padding-right: 4%;
+
+    @media (max-width: 550px) {
+    padding:5%;
+    }
 `;
 
 export const LabelInstructBlack = styled.span`
-
 color:black;
 `;
 export const InstanceSelect = styled.select`
@@ -67,10 +80,8 @@ export const InstanceSelect = styled.select`
   width:350px;
   height: 40px;
   padding-left: 35px; 
-  margin-lef:100px;
-  margin-right:30px;
   border-radius: 8px;
-  background-image: url("../../assets/Navbar/icon-input-header-chevron.svg");
+  background-image: url(${`${process.env.PUBLIC_URL}/assets/Navbar/icon-input-header-chevron.svg`});
   background-position:1% center;
   background-repeat: no-repeat;
   background-size: 30px 15px; 
@@ -112,8 +123,6 @@ export  const AccountSelect = styled.select`
   width:350px;
   height: 40px;
   padding-left: 35px; 
-  margin-lef:100px;
-  margin-right:30px;
   border-radius: 8px;
   background-image: url("../../assets/Navbar/icon-input-header-chevron.svg");
   background-position:1% center;
@@ -124,6 +133,7 @@ export  const AccountSelect = styled.select`
     padding-right:5px;
     color: #888;
   }
+  
 `;
 
 export const MenuConfig = styled.div`
@@ -138,9 +148,10 @@ align-items: center;
 text-align: center;
 
 @media (max-width: 1440px) {
-margin-left:5%;
-order: 3;
+margin-left:0;
+order:3;
 }
+
 `;
 
 export const IconUser = styled.div`
@@ -161,6 +172,7 @@ export const IconUser = styled.div`
     padding-left: 8%;
     white-space: nowrap;
   }
+  
 `;
 
 export const IconMenuConfig = styled.div`

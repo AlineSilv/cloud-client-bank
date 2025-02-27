@@ -66,7 +66,7 @@ function Dashboard() {
   return (
     <ContentScreen>
       <RowHeader>
-        <BoxLogo><Logo src={`${process.env.PUBLIC_URL}/assets/TelaLogin/softwareone-logo.svg`} alt="logo" />
+        <BoxLogo><Logo src={`${process.env.PUBLIC_URL}/assets/TelaLogin/logo-cloud-client.png`} alt="logo" />
         </BoxLogo>
         <HeaderMenuBar>
           <LabelInstruct> Instâncias / <LabelInstructBlack>{selectedInstance || ""}</LabelInstructBlack></LabelInstruct>

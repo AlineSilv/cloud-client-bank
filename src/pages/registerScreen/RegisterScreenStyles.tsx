@@ -18,6 +18,7 @@ margin-left:25%;
 
 export const ImgLogo = styled.img`
 width:10%;
+filter: grayscale(100%);
 `;
 
 export const BoxForm = styled.div``;

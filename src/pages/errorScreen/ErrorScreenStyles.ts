@@ -15,8 +15,9 @@ export const BoxLogo = styled.div`
   width: 250px;
   margin-left: 35px;
   margin-top:30px;
+  
   @media (max-width: 1200px) {
-  width: 180px;
+  max-width: 100px;
   padding-bottom: 0;
   order:1;
   }
@@ -28,20 +29,32 @@ export const HeaderMenuBar =styled.div`
   display: flex;
   white-space: nowrap;
 
-  @media (max-width: 1200px) {
-    display:flex;
-    width: 70%;
-    display: flex;
-    align-items: center;
-    padding-left: 80px;
+    @media (max-width: 1200px) {
+    width: 65%;
     order: 2;
-
     }
+
+    @media (max-width: 800px) {
+    width: 40%;
+    order: 2;
+    }
+
+    @media (max-width: 650px) {
+    width: 30%;
+    order: 2;
+    }
+
 `;
 
 export const Logo = styled.img`
+filter: grayscale(100%);
  max-width:100px;
  cursor:pointer;
+
+  @media (max-width: 1000px) {
+  max-width:100px;
+
+  }
 `;
 
 export const MenuConfig = styled.div`
@@ -54,11 +67,8 @@ flex-direction: row-reverse;
 justify-content: flex-end; 
 align-items: center;
 text-align: center;
+order:3;
 
-@media (max-width: 1440px) {
-margin-left:5%;
-order: 3;
-}
 `;
 
 export const IconUser = styled.div`
@@ -91,6 +101,8 @@ export const IconMenuConfig = styled.div`
 export const IconMenuNotification = styled.div`
   widht:70px;
   opacity: 60%;
+  position: relative;
+  cursor: pointer;
 `;
 
 export const ContainerContent = styled.div`

@@ -51,7 +51,7 @@ const Login: React.FC = () => {
     <ContentScreen>
       <Content>
         <BoxLogo>
-          <Logo src={`${process.env.PUBLIC_URL}/assets/TelaLogin/softwareone-logo.svg`} alt="logo image" />
+          <Logo src={`${process.env.PUBLIC_URL}/assets/TelaLogin/logo-cloud-client.png`} alt="logo image" />
         </BoxLogo>
         <ContainerLogin>
           <BoxWelcome>

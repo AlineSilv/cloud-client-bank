@@ -33,7 +33,7 @@ function Home() {
   return (
       <ContentScreen>
         <RowHeader>
-            <BoxLogo><Logo src={`${process.env.PUBLIC_URL}/assets/TelaLogin/softwareone-logo.svg`}
+            <BoxLogo><Logo src={`${process.env.PUBLIC_URL}/assets/TelaLogin/logo-cloud-client.png`}
             onMouseEnter={() => setIsAsideVisible(true)}/></BoxLogo>
             <HeaderMenuBar></HeaderMenuBar>
             <MenuConfig>

@@ -15,14 +15,16 @@ export const BoxLogo = styled.div`
   width: 250px;
   margin-left: 35px;
   margin-top:30px;
+
   @media (max-width: 1200px) {
-  width: 180px;
+  max-width: 100px;
   padding-bottom: 0;
   order:1;
   }
 `;
 
 export const Logo = styled.img`
+filter: grayscale(100%);
  max-width:100px;
  cursor:pointer;
 `;
@@ -40,7 +42,22 @@ export const HeaderMenuBar =styled.div`
     align-items: center;
     padding-left: 80px;
     order: 2;
+    }
+  
+    @media (max-width: 800px) {
+    display:flex;
+    max-width: 50%;
+    display: flex;
+    align-items: center;
+    order: 2;
+    }
 
+    @media (max-width: 700px) {
+    display:flex;
+    max-width: 30%;
+    display: flex;
+    align-items: center;
+    order: 2;
     }
 `;
 

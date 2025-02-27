@@ -33,14 +33,20 @@ export const ContainerLogin = styled.div`
 `;
 
 export const Logo = styled.img`
+  filter: grayscale(100%);
   margin-top:5%;
   width:15%;
   align-content: flex-start;
   padding-left: 10%;
+
   @media (max-width: 768px) {
-  width:20%;
-  margin-left:35%;
+  margin-top:20%;
+  margin-bottom:5%;
+  width:35%;
+  align-content: flex-start;
+  margin-left: 30%;
   }
+
 `;
 
 export const BoxWelcome = styled.div`
