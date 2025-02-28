@@ -24,6 +24,14 @@
 > 5. Abra um **Pull Request**
 
 <div align="center">
+   
+[![GitHub hits](https://img.shields.io/github/last-commit/AlineSilv/cloud-client-bank?label=project%20updated&style=flat-square&color=green)](https://github.com/AlineSilv/cloud-client-bank)
+![Issues](https://img.shields.io/github/issues/AlineSilv/cloud-client-bank?style=flat-square&label=Issues&color=green)
+![Pull Requests](https://img.shields.io/github/issues-pr/AlineSilv/cloud-client-bank?style=flat-square&label=PRs&color=green)
+
+</div>
+
+<div align="center">
 
 ![Typing SVG](https://readme-typing-svg.herokuapp.com/?center=true&vCenter=true&color=ffffff&lines=Projeto+React+TypeScript;Análises+de+Dados+Clientes+Cloud)
 
