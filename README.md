@@ -4,8 +4,8 @@
    
 [![LinkedIn](https://img.shields.io/badge/linkedin-black.svg?style=flat-square&logo=linkedin&logoColor=white)](http://www.linkedin.com/in/alinealv-silv) 
 [![GitHub](https://img.shields.io/badge/github-black.svg?style=flat-square&logo=github&logoColor=white)](https://github.com/AlineSilv) 
-![Stars](https://img.shields.io/github/stars/AlineSilv/AlineSilv?style=flat-square&labelColor=343b41) 
-![Forks](https://img.shields.io/github/forks/AlineSilv/AlineSilv?style=flat-square&labelColor=343b41) 
+![Stars](https://img.shields.io/github/stars/AlineSilv/cloud-client-bank?style=flat-square&labelColor=343b41) 
+![Forks](https://img.shields.io/github/forks/AlineSilv/cloud-client-bank?style=flat-square&labelColor=343b41) 
 ![Commits](https://img.shields.io/github/commit-activity/m/AlineSilv/cloud-client-bank?style=flat-square&labelColor=343b41)
 [![Gmail Badge](https://img.shields.io/badge/-alinealv.silv@gmail.com-181717?style=flat-square&logo=Gmail&logoColor=white)](mailto:alinealv.silv@gmail.com)
 
