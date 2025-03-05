@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
+import LogoutModal from '../login/LogoutModal.tsx'
 
 import {
   ContentScreen,
@@ -8,9 +9,7 @@ import {
   Logo,
   HeaderMenuBar,
   MenuConfig,
-  IconUser,
-  IconMenuConfig,
-  IconMenuNotification,
+  IconLogout,
   ContentAside,
   IconButton,
   WindowsAside,
@@ -29,6 +28,12 @@ import {
 function Home() {
   const [isAsideVisible, setIsAsideVisible] = useState(false);
   const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleLogout = () => {
+    setIsModalOpen(false);
+    navigate('/');
+  };
 
   return (
       <ContentScreen>
@@ -37,30 +42,24 @@ function Home() {
             onMouseEnter={() => setIsAsideVisible(true)}/></BoxLogo>
             <HeaderMenuBar></HeaderMenuBar>
             <MenuConfig>
-            <IconMenuNotification>
+            <IconLogout>
                 <img
-                  src={`${process.env.PUBLIC_URL}/assets/Navbar/icon-header-menu-config-notification.svg`}
-                  style={{ width: 25, height: 20 }} alt="alerts"
-                ></img>
-            </IconMenuNotification>
-            <IconMenuConfig>
-              <img
-                src={`${process.env.PUBLIC_URL}/assets/Navbar/TreePoints.svg`}
-                style={{ width: 40, height: 25 }}
-                alt=""
-              />
-            </IconMenuConfig>
-            <IconUser>
-            <img
-              src={`${process.env.PUBLIC_URL}/assets/Navbar/UserCircle.svg`}
-              style={{ width: 25, height: 20 }} alt="usuario"
-              ></img><p>Aline</p>
-            </IconUser>
+                  src={`${process.env.PUBLIC_URL}/assets/Navbar/icon-logout.png`}
+                  style={{ width: 15, height: 20 }} alt="logout"
+                  onClick={() => setIsModalOpen(true)}></img>
+            </IconLogout>
             </MenuConfig>
         </RowHeader>
         <ContentAside style={{ display: isAsideVisible ? "block" : "none" }}
         onMouseLeave={() => setIsAsideVisible(false)}>
           <WindowsAside>
+                <BoxIcon  style={{ cursor: "pointer" }}>
+                <IconButton
+                  style={{ width: 25, height: 20 }} alt="usuario"
+                  src={`${process.env.PUBLIC_URL}/assets/Navbar/UserCircle.svg`}
+                />
+                <BoxIconTitle>Aline</BoxIconTitle>
+              </BoxIcon>
               <BoxIcon onClick={() => navigate("/dashboard")} style={{ cursor: "pointer" }}>
                 <IconButton
                   style={{ width: 20, height: 20 }}
@@ -92,12 +91,17 @@ function Home() {
               Fale conosco!
             </TextBoxHelp>
             <BoxButtonContact>
-              <a href="https://www.softwareone.com/pt-br/entre-em-contato">
+              <a href="google.com">
                 <ButtonContact>Clique aqui</ButtonContact>
               </a>
             </BoxButtonContact>
           </ContainerHelp>
         </ContentAside>
+        <LogoutModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        onConfirm={handleLogout} 
+        />
       </ContentScreen>
   );
 }

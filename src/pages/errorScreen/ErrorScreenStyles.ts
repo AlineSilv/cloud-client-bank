@@ -14,7 +14,7 @@ export const RowHeader = styled.div`
 export const BoxLogo = styled.div`
   width: 250px;
   margin-left: 35px;
-  margin-top:30px;
+  margin-top:20px;
   
   @media (max-width: 1200px) {
   max-width: 100px;
@@ -79,6 +79,7 @@ export const IconUser = styled.div`
   text-align: center;
   align-items: center;
   margin-bottom: 6px;
+  margin-right:50%;
 
   & a {
     text-decoration: none;
@@ -86,7 +87,7 @@ export const IconUser = styled.div`
   }
 
   & p {
-    padding-left: 8%;
+    padding-left: 10px;
     white-space: nowrap;
   }
 `;
@@ -98,7 +99,7 @@ export const IconMenuConfig = styled.div`
   cursor: pointer;
 `;
 
-export const IconMenuNotification = styled.div`
+export const IconLogout = styled.div`
   widht:70px;
   opacity: 60%;
   position: relative;

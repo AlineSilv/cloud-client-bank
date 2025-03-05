@@ -1,4 +1,6 @@
 import React,  { useState, useEffect, lazy, Suspense }  from 'react';
+import { useNavigate } from 'react-router-dom';
+import LogoutModal from '../login/LogoutModal.tsx'
 import {
   ContentScreen,
   RowHeader,
@@ -9,9 +11,7 @@ import {
   LabelInstructBlack,
   InstanceSelect,
   MenuConfig,
-  IconUser,
-  IconMenuConfig,
-  IconMenuNotification,
+  IconLogout,
   RelatoryContent,
 } from "./RelatoryStyles.ts";
 
@@ -63,10 +63,19 @@ function Relatory() {
 
   const SelectedRelatory = selectedInstance ? relatoryComponents[selectedInstance] : null;
   
+  const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const handleLogout = () => {
+    setIsModalOpen(false);
+    navigate('/');
+  };
+
   return (
     <ContentScreen>
       <RowHeader>
-        <BoxLogo><Logo src={`${process.env.PUBLIC_URL}/assets/TelaLogin/logo-cloud-client.png`} alt="logo"/></BoxLogo>
+        <BoxLogo><Logo src={`${process.env.PUBLIC_URL}/assets/TelaLogin/logo-cloud-client.png`} alt="logo"
+            style={{ cursor: "pointer" }} 
+            onClick={() => navigate("/home")}/></BoxLogo>
         <HeaderMenuBar>
           <LabelInstruct> Instâncias / <LabelInstructBlack>{selectedInstance || ""}</LabelInstructBlack></LabelInstruct>
           <InstanceSelect value={selectedInstance} onChange={(e) => handleFilterChange(e.target.value)}> 
@@ -82,16 +91,10 @@ function Relatory() {
           </InstanceSelect>
         </HeaderMenuBar>
         <MenuConfig>
-          <IconMenuNotification>
-            <img src= {`${process.env.PUBLIC_URL}/assets/Navbar/icon-header-menu-config-notification.svg`} alt="alertas" style={{ width: 25, height: 20 }} />
-          </IconMenuNotification>
-          <IconMenuConfig>
-            <img src={`${process.env.PUBLIC_URL}/assets/Navbar/TreePoints.svg `}alt="menu" style={{ width: 40, height: 25 }} />
-          </IconMenuConfig>
-          <IconUser>
-            <img src={`${process.env.PUBLIC_URL}/assets/Navbar/UserCircle.svg`} alt="usuario" style={{ width: 25, height: 20 }} />
-            <p>Aline</p>
-          </IconUser>
+          <IconLogout>
+            <img src= {`${process.env.PUBLIC_URL}/assets/Navbar/icon-logout.png`} alt="alertas" style={{ width: 15, height: 20 }} 
+            onClick={() => setIsModalOpen(true)}/>
+          </IconLogout>
         </MenuConfig>
       </RowHeader>
       <RelatoryContent>
@@ -101,6 +104,11 @@ function Relatory() {
           </Suspense>
         )}
       </RelatoryContent>
+      <LogoutModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        onConfirm={handleLogout} 
+        />
     </ContentScreen>
   );
 }

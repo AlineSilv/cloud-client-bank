@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 export const ContentScreen = styled.div`
 font-family: 'Poppins', sans-serif;
-background-color:#F8F9FA;
 font-size: 16px;
 `;
 
 export const RowHeader = styled.div`
+  background-color:#F8F9FA;
   display: flex;
   flex-direction: row;
 `;
@@ -14,7 +14,8 @@ export const RowHeader = styled.div`
 export const BoxLogo = styled.div`
   width: 250px;
   margin-left: 35px;
-  padding-top:25px;
+  padding-top:15px;
+  padding-bottom:10px;
 
   @media (max-width: 1200px) {
   max-width: 100px;
@@ -137,9 +138,7 @@ export  const AccountSelect = styled.select`
 `;
 
 export const MenuConfig = styled.div`
-margin-left:20%;
 margin-top:20px;
-width: 15%;
 padding-bottom: 2%;
 display: flex;
 flex-direction: row-reverse;
@@ -154,28 +153,8 @@ order:3;
 
 `;
 
-export const IconUser = styled.div`
-  width: 50px;
-  opacity: 60%;
-  display: flex;
-  flex-direction: row;
-  text-align: center;
-  align-items: center;
-  margin-bottom: 6px;
 
-  & a {
-    text-decoration: none;
-    color: inherit;
-  }
-
-  & p {
-    padding-left: 8%;
-    white-space: nowrap;
-  }
-  
-`;
-
-export const IconMenuConfig = styled.div`
+export const IconLogout = styled.div`
   width:60px;
   opacity: 60%;
   position: relative;

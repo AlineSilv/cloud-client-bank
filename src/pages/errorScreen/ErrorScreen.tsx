@@ -7,9 +7,8 @@ import {
   Logo,
   BoxLogo,
   IconUser,
-  IconMenuNotification,
+  IconLogout,
   HeaderMenuBar,
-  IconMenuConfig,
   ContainerContent,
   ContainerIllustration,
   Illustration,
@@ -33,25 +32,18 @@ function Error() {
         </BoxLogo>
         <HeaderMenuBar></HeaderMenuBar>
         <MenuConfig>
-          <IconMenuNotification>
+          <IconLogout>
             <img
               src={`${process.env.PUBLIC_URL}/assets/Navbar/icon-header-menu-config-notification.svg`}
-              style={{ width: 25, height: 20 }} alt="" 
+              style={{ width: 15, height: 20 }} alt="" 
             />
-          </IconMenuNotification>
-          <IconMenuConfig>
-            <img
-              src={`${process.env.PUBLIC_URL}/assets/Navbar/TreePoints.svg`}
-              style={{ width: 40, height: 25 }}
-              alt=""
-            />
-          </IconMenuConfig>
+          </IconLogout>
           <IconUser>
             <img
               src={`${process.env.PUBLIC_URL}/assets/Navbar/UserCircle.svg`}
               style={{ width: 25, height: 20 }} alt="" 
             />
-            <p>Aline</p>
+            <p>ErrorBot</p>
           </IconUser>
         </MenuConfig>
       </RowHeader>

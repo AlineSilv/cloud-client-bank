@@ -14,7 +14,8 @@ export const RowHeader = styled.div`
 export const BoxLogo = styled.div`
   width: 250px;
   margin-left: 35px;
-  margin-top:30px;
+  padding-bottom:10px;
+  margin-top:15px;
 
   @media (max-width: 1200px) {
   max-width: 100px;
@@ -30,7 +31,7 @@ filter: grayscale(100%);
 `;
 
 export const HeaderMenuBar =styled.div`
-  width:70%;
+  width:73%;
   align-items: center;
   display: flex;
   white-space: nowrap;
@@ -68,9 +69,7 @@ export const LabelInstruct = styled.p`
 `;
 
 export const MenuConfig = styled.div`
-margin-left:20%;
 margin-top:20px;
-width: 15%;
 padding-bottom: 2%;
 display: flex;
 flex-direction: row-reverse;
@@ -79,42 +78,18 @@ align-items: center;
 text-align: center;
 
 @media (max-width: 1440px) {
-margin-left:5%;
-order: 3;
+order: 2;
 }
 `;
 
-export const IconUser = styled.div`
-  width: 50px;
-  opacity: 60%;
-  display: flex;
-  flex-direction: row;
-  text-align: center;
-  align-items: center;
-  margin-bottom: 6px;
 
-  & a {
-    text-decoration: none;
-    color: inherit;
-  }
-
-  & p {
-    padding-left: 8%;
-    white-space: nowrap;
-  }
-`;
-
-export const IconMenuConfig = styled.div`
+export const IconLogout = styled.div`
   width:60px;
   opacity: 60%;
   position: relative;
   cursor: pointer;
 `;
 
-export const IconMenuNotification = styled.div`
-  widht:70px;
-  opacity: 60%;
-`;
 
 export const ContentAside = styled.div`
   height: auto;
