@@ -1,4 +1,9 @@
 import React, { useState } from "react";
+import { jsPDF } from "jspdf";
+import autoTable from "jspdf-autotable";
+import { saveAs } from "file-saver";
+import * as XLSX from "xlsx";
+
 import {
   Container,
   Table,
@@ -18,8 +23,11 @@ import {
   ModalFooter,
   CloseButton,
   Checkbox,
-  FilterButton
-} from "./TableStyles.ts";
+  FilterButton,
+  LabelBox,
+  ButtonDownload
+} from "./TableStyles";
+
 
 interface AMIs {
   Account: string;
@@ -37,7 +45,8 @@ interface RelatoryAMIsProps {
 const RelatoryAMIs: React.FC<RelatoryAMIsProps> = ({ data }) => {
   const itemsPerPage = 15;
   const [currentPage, setCurrentPage] = useState(1);
-  const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisibleFilter, setModalVisibleFilter] = useState(false);
+  const [modalVisibleDownload, setModalVisibleDownload] = useState(false);
   const [selectedColumns, setSelectedColumns] = useState({
     Account: true,
     Region: true,
@@ -60,7 +69,7 @@ const RelatoryAMIs: React.FC<RelatoryAMIsProps> = ({ data }) => {
   };
 
   const applyFilters = () => {
-    setModalVisible(false);
+    setModalVisibleFilter(false);
   };
 
   const revertFilters = () => {
@@ -72,21 +81,67 @@ const RelatoryAMIs: React.FC<RelatoryAMIsProps> = ({ data }) => {
       CreationDate: true,
       State: true,
     });
-    setModalVisible(false);
+    setModalVisibleFilter(false);
+  };
+
+  // Função para exportar os dados para JSON
+  const exportToJSON = () => {
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+    saveAs(blob, "relatorio_amis.json");
+  };
+
+  // Função para exportar os dados para PDF
+  const exportToPDF = () => {
+    const doc = new jsPDF();
+    doc.text("Relatório de AMIs", 20, 20);
+  
+    const tableData = data.map((item) => [
+      item.Account,
+      item.Region,
+      item.ImageID,
+      item.Name,
+      item.CreationDate,
+      item.State,
+    ]);
+  
+    // Chama autoTable corretamente
+    autoTable(doc, {
+      head: [["Account", "Region", "Image ID", "Name", "Creation Date", "State"]],
+      body: tableData,
+    });
+  
+    doc.save("relatorio_amis.pdf");
+  };
+
+  // Função para exportar os dados para Excel
+  const exportToExcel = () => {
+    const ws = XLSX.utils.json_to_sheet(data);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "AMIs");
+    XLSX.writeFile(wb, "relatorio_amis.xlsx");
   };
 
   return (
     <Container>
       <TableWrapper>
         <DescriptionBox>
-          <h3>Relatório de AMIs</h3>
-          <p>
-            Agrupar por
-            <ButtonSelectColumn type="button" onClick={() => setModalVisible(true)}>
+          <LabelBox>
+            <h3>Relatório de AMIs</h3>
+            <ButtonDownload type="button" onClick={() => setModalVisibleDownload(true)}>
               <img
-              src={`${process.env.PUBLIC_URL}/assets/Navbar/icon-filter.png`}
-              style={{ width: 15, height: 20 }}
-              alt="filtro"
+                src={`${process.env.PUBLIC_URL}/assets/Navbar/icon-download.png`}
+                style={{ width: 20, height: 20 }}
+                alt="baixar"
+              />
+            </ButtonDownload>
+          </LabelBox>
+          <p>
+            Agrupar por colunas:
+            <ButtonSelectColumn type="button" onClick={() => setModalVisibleFilter(true)}>
+              <img
+                src={`${process.env.PUBLIC_URL}/assets/Navbar/icon-filter.png`}
+                style={{ width: 15, height: 20 }}
+                alt="filtro"
               />
             </ButtonSelectColumn>
           </p>
@@ -116,57 +171,73 @@ const RelatoryAMIs: React.FC<RelatoryAMIsProps> = ({ data }) => {
           </tbody>
         </Table>
         {totalPages > 1 && (
-        <PaginationContainer>
-          <PaginationButton
-            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-            disabled={currentPage === 1}
-          >
-            <img
-              src={`${process.env.PUBLIC_URL}/assets/Navbar/icon-back.png`}
-              style={{ width: 15, height: 20 }}
-              alt="voltar"
-            />
-          </PaginationButton>
-          <span>{currentPage}&nbsp;&nbsp;de&nbsp;&nbsp;{totalPages}</span>
-          <PaginationButton
-            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-            disabled={currentPage === totalPages}
-          >
-            <img
-              src={`${process.env.PUBLIC_URL}/assets/Navbar/icon-back.png`}
-              style={{ width: 15, height: 20, transform: "scaleX(-1)" }}
-              alt="avançar"
-            />
-          </PaginationButton>
-        </PaginationContainer>
-      )}
+          <PaginationContainer>
+            <PaginationButton
+              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+              disabled={currentPage === 1}
+            >
+              <img
+                src={`${process.env.PUBLIC_URL}/assets/Navbar/icon-back.png`}
+                style={{ width: 15, height: 20 }}
+                alt="voltar"
+              />
+            </PaginationButton>
+            <span>{currentPage}&nbsp;&nbsp;de&nbsp;&nbsp;{totalPages}</span>
+            <PaginationButton
+              onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+              disabled={currentPage === totalPages}
+            >
+              <img
+                src={`${process.env.PUBLIC_URL}/assets/Navbar/icon-back.png`}
+                style={{ width: 15, height: 20, transform: "scaleX(-1)" }}
+                alt="avançar"
+              />
+            </PaginationButton>
+          </PaginationContainer>
+        )}
       </TableWrapper>
 
-      {modalVisible && (
-        <Modal>
-          <ModalContent>
+      {/* Modal de Filtro */}
+      {modalVisibleFilter && (
+        <Modal onClick={() => setModalVisibleFilter(false)}>
+          <ModalContent onClick={(e) => e.stopPropagation()}>
             <ModalHeader>
-              <h3>Seleção de Colunas</h3>
-              <CloseButton onClick={() => setModalVisible(false)}>×</CloseButton>
+              <h3>Seleção de Filtros</h3>
+              <CloseButton onClick={() => setModalVisibleFilter(false)}>×</CloseButton>
             </ModalHeader>
             <ModalBody>
               {Object.keys(selectedColumns).map((column) => (
                 <div key={column}>
-                  <label>
-                    <Checkbox
-                      type="checkbox"
-                      checked={selectedColumns[column as keyof AMIs]}
-                      onChange={() => handleColumnToggle(column as keyof AMIs)}
-                    />
-                    {column}
-                  </label>
+                  <Checkbox
+                    type="checkbox"
+                    checked={selectedColumns[column as keyof AMIs]}
+                    onChange={() => handleColumnToggle(column as keyof AMIs)}
+                  />
+                  <label>{column}</label>
                 </div>
               ))}
             </ModalBody>
             <ModalFooter>
-              <FilterButton onClick={revertFilters}>Reverter</FilterButton>
-              <FilterButton onClick={applyFilters}>Aplicar</FilterButton>
+              <FilterButton onClick={applyFilters}>Aplicar Filtros</FilterButton>
+              <FilterButton onClick={revertFilters}>Reverter Filtros</FilterButton>
             </ModalFooter>
+          </ModalContent>
+        </Modal>
+      )}
+
+      {/* Modal de Download */}
+      {modalVisibleDownload && (
+        <Modal onClick={() => setModalVisibleDownload(false)}>
+          <ModalContent onClick={(e) => e.stopPropagation()}>
+            <ModalHeader>
+              <h3>Seleção de Formato</h3>
+              <CloseButton onClick={() => setModalVisibleDownload(false)}>×</CloseButton>
+            </ModalHeader>
+            <ModalBody>
+              <FilterButton onClick={exportToJSON}>Exportar como JSON</FilterButton>
+              <FilterButton onClick={exportToPDF}>Exportar como PDF</FilterButton>
+              <FilterButton onClick={exportToExcel}>Exportar como Excel</FilterButton>
+            </ModalBody>
           </ModalContent>
         </Modal>
       )}

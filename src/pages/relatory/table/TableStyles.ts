@@ -149,7 +149,7 @@ export const PaginationButton = styled.button`
 `;
 
 export const DescriptionBox = styled.div`
-margin:20px;
+margin-top:20px;
 margin-left:40px;
 `
 
@@ -219,8 +219,6 @@ export const Checkbox = styled.input`
 `;
 
 export const FilterButton = styled.button`
-  margin: 0 5px;
-  padding: 5px 10px;
   border: none;
   cursor: pointer;
   border-radius: 5px;
@@ -235,3 +233,29 @@ export const FilterButton = styled.button`
   }
 
 `;
+
+export const LabelBox = styled.div`
+  display:flex;
+  white-space: nowrap;
+  flex-direction: row;
+  justify-content: space-between;
+`
+
+export const ButtonDownload = styled.button`
+  cursor: pointer;
+  padding-left: 5px;
+  background: none;
+  border: none;
+  align-items: center;
+
+  img {
+    width: 15px;
+    height: 15px;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+`
