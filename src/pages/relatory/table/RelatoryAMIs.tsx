@@ -8,7 +8,16 @@ import {
   PaginationButton,
   TableWrapper,
   Th,
-  Td
+  Td,
+  DescriptionBox,
+  ButtonSelectColumn,
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  CloseButton,
+  Checkbox,
 } from "./TableStyles.ts";
 
 interface AMIs {
@@ -27,35 +36,74 @@ interface RelatoryAMIsProps {
 const RelatoryAMIs: React.FC<RelatoryAMIsProps> = ({ data }) => {
   const itemsPerPage = 15;
   const [currentPage, setCurrentPage] = useState(1);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [selectedColumns, setSelectedColumns] = useState({
+    Account: true,
+    Region: true,
+    ImageID: true,
+    Name: true,
+    CreationDate: true,
+    State: true,
+  });
+
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
   const totalPages = Math.ceil(data.length / itemsPerPage);
 
+  // Função para alternar as seleções das colunas
+  const handleColumnToggle = (column: string) => {
+    setSelectedColumns((prev) => ({
+      ...prev,
+      [column]: !prev[column],
+    }));
+  };
+
+  // Função para aplicar os filtros
+  const applyFilters = () => {
+    setModalVisible(false);
+  };
+
+  // Função para reverter para o estado inicial
+  const revertFilters = () => {
+    setSelectedColumns({
+      Account: true,
+      Region: true,
+      ImageID: true,
+      Name: true,
+      CreationDate: true,
+      State: true,
+    });
+    setModalVisible(false);
+  };
+
   return (
     <Container>
-      <h2>Relatório de AMIs</h2>
       <TableWrapper>
+        <DescriptionBox>
+          <h3>Relatório de AMIs</h3>
+          <p>Agrupar por <ButtonSelectColumn onClick={() => setModalVisible(true)} /></p>
+        </DescriptionBox>
         <Table>
           <Thead>
             <Tr>
-              <Th>Account</Th>
-              <Th>Region</Th>
-              <Th>Image ID</Th>
-              <Th>Name</Th>
-              <Th>Creation Date</Th>
-              <Th>State</Th>
+              {selectedColumns.Account && <Th>Account</Th>}
+              {selectedColumns.Region && <Th>Region</Th>}
+              {selectedColumns.ImageID && <Th>Image ID</Th>}
+              {selectedColumns.Name && <Th>Name</Th>}
+              {selectedColumns.CreationDate && <Th>Creation Date</Th>}
+              {selectedColumns.State && <Th>State</Th>}
             </Tr>
           </Thead>
           <tbody>
             {currentItems.map((ami) => (
               <Tr key={ami.ImageID}>
-                <Td>{ami.Account}</Td>
-                <Td>{ami.Region}</Td>
-                <Td>{ami.ImageID}</Td>
-                <Td>{ami.Name}</Td>
-                <Td>{ami.CreationDate}</Td>
-                <Td>{ami.State}</Td>
+                {selectedColumns.Account && <Td>{ami.Account}</Td>}
+                {selectedColumns.Region && <Td>{ami.Region}</Td>}
+                {selectedColumns.ImageID && <Td>{ami.ImageID}</Td>}
+                {selectedColumns.Name && <Td>{ami.Name}</Td>}
+                {selectedColumns.CreationDate && <Td>{ami.CreationDate}</Td>}
+                {selectedColumns.State && <Td>{ami.State}</Td>}
               </Tr>
             ))}
           </tbody>
@@ -77,6 +125,36 @@ const RelatoryAMIs: React.FC<RelatoryAMIsProps> = ({ data }) => {
             Próximo
           </PaginationButton>
         </PaginationContainer>
+      )}
+
+      {/* Modal de Seleção de Colunas */}
+      {modalVisible && (
+        <Modal>
+          <ModalContent>
+            <ModalHeader>
+              <h3>Seleção de Colunas</h3>
+              <CloseButton onClick={() => setModalVisible(false)}>×</CloseButton>
+            </ModalHeader>
+            <ModalBody>
+              {Object.keys(selectedColumns).map((column) => (
+                <div key={column}>
+                  <label>
+                    <Checkbox
+                      type="checkbox"
+                      checked={selectedColumns[column as keyof typeof selectedColumns]}
+                      onChange={() => handleColumnToggle(column)}
+                    />
+                    {column}
+                  </label>
+                </div>
+              ))}
+            </ModalBody>
+            <ModalFooter>
+              <PaginationButton onClick={revertFilters}>Reverter</PaginationButton>
+              <PaginationButton onClick={applyFilters}>Aplicar</PaginationButton>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
       )}
     </Container>
   );
