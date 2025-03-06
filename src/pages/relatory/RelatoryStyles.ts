@@ -9,6 +9,8 @@ export const RowHeader = styled.div`
   background-color:#F8F9FA;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const BoxLogo = styled.div`
@@ -32,25 +34,20 @@ filter: grayscale(100%);
 `;
 
 export const HeaderMenuBar =styled.div`
-  width:70%;
   align-items: center;
   display: flex;
   white-space: nowrap;
-  margin-lef:100px;
-  margin-right:30px;
+   margin-left:-20%;
+  justify-content: flex-start;
 
   @media (max-width: 1200px) {
-    display:flex;
-    width: 70%;
-    display: flex;
-    align-items: center;
     order: 2;
     }
-
-    @media (max-width: 500px) {
-    margin-right:5%;
-    }
   
+    @media (max-width: 750px) {
+    margin-left:0px;
+    }
+
 `;
 
 export const LabelInstruct = styled.p`
@@ -138,7 +135,7 @@ export  const AccountSelect = styled.select`
 `;
 
 export const MenuConfig = styled.div`
-margin-top:20px;
+margin-top:30px;
 padding-bottom: 2%;
 display: flex;
 flex-direction: row-reverse;
@@ -146,8 +143,7 @@ justify-content: flex-end;
 align-items: center;
 text-align: center;
 
-@media (max-width: 1440px) {
-margin-left:0;
+@media (max-width: 1200px) {
 order:3;
 }
 
@@ -161,10 +157,6 @@ export const IconLogout = styled.div`
   cursor: pointer;
 `;
 
-export const IconMenuNotification = styled.div`
-  widht:70px;
-  opacity: 60%;
-`;
 
 export const RelatoryContent = styled.div`
   display: flex;

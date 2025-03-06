@@ -75,7 +75,8 @@ function Relatory() {
       <RowHeader>
         <BoxLogo><Logo src={`${process.env.PUBLIC_URL}/assets/TelaLogin/logo-cloud-client.png`} alt="logo"
             style={{ cursor: "pointer" }} 
-            onClick={() => navigate("/home")}/></BoxLogo>
+            onClick={() => navigate("/home")}/>
+        </BoxLogo>
         <HeaderMenuBar>
           <LabelInstruct> Instâncias / <LabelInstructBlack>{selectedInstance || ""}</LabelInstructBlack></LabelInstruct>
           <InstanceSelect value={selectedInstance} onChange={(e) => handleFilterChange(e.target.value)}> 

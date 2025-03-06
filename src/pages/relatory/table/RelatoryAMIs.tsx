@@ -18,6 +18,7 @@ import {
   ModalFooter,
   CloseButton,
   Checkbox,
+  FilterButton
 } from "./TableStyles.ts";
 
 interface AMIs {
@@ -51,20 +52,17 @@ const RelatoryAMIs: React.FC<RelatoryAMIsProps> = ({ data }) => {
   const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
   const totalPages = Math.ceil(data.length / itemsPerPage);
 
-  // Função para alternar as seleções das colunas
-  const handleColumnToggle = (column: string) => {
+  const handleColumnToggle = (column: keyof AMIs) => {
     setSelectedColumns((prev) => ({
       ...prev,
       [column]: !prev[column],
     }));
   };
 
-  // Função para aplicar os filtros
   const applyFilters = () => {
     setModalVisible(false);
   };
 
-  // Função para reverter para o estado inicial
   const revertFilters = () => {
     setSelectedColumns({
       Account: true,
@@ -82,7 +80,16 @@ const RelatoryAMIs: React.FC<RelatoryAMIsProps> = ({ data }) => {
       <TableWrapper>
         <DescriptionBox>
           <h3>Relatório de AMIs</h3>
-          <p>Agrupar por <ButtonSelectColumn onClick={() => setModalVisible(true)} /></p>
+          <p>
+            Agrupar por
+            <ButtonSelectColumn type="button" onClick={() => setModalVisible(true)}>
+              <img
+              src={`${process.env.PUBLIC_URL}/assets/Navbar/icon-filter.png`}
+              style={{ width: 15, height: 20 }}
+              alt="filtro"
+              />
+            </ButtonSelectColumn>
+          </p>
         </DescriptionBox>
         <Table>
           <Thead>
@@ -108,26 +115,33 @@ const RelatoryAMIs: React.FC<RelatoryAMIsProps> = ({ data }) => {
             ))}
           </tbody>
         </Table>
-      </TableWrapper>
-      {totalPages > 1 && (
+        {totalPages > 1 && (
         <PaginationContainer>
-          <PaginationButton 
-            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))} 
+          <PaginationButton
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
           >
-            Anterior
+            <img
+              src={`${process.env.PUBLIC_URL}/assets/Navbar/icon-back.png`}
+              style={{ width: 15, height: 20 }}
+              alt="voltar"
+            />
           </PaginationButton>
-          <span>Página {currentPage} de {totalPages}</span>
-          <PaginationButton 
-            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))} 
+          <span>{currentPage}&nbsp;&nbsp;de&nbsp;&nbsp;{totalPages}</span>
+          <PaginationButton
+            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
             disabled={currentPage === totalPages}
           >
-            Próximo
+            <img
+              src={`${process.env.PUBLIC_URL}/assets/Navbar/icon-back.png`}
+              style={{ width: 15, height: 20, transform: "scaleX(-1)" }}
+              alt="avançar"
+            />
           </PaginationButton>
         </PaginationContainer>
       )}
+      </TableWrapper>
 
-      {/* Modal de Seleção de Colunas */}
       {modalVisible && (
         <Modal>
           <ModalContent>
@@ -141,8 +155,8 @@ const RelatoryAMIs: React.FC<RelatoryAMIsProps> = ({ data }) => {
                   <label>
                     <Checkbox
                       type="checkbox"
-                      checked={selectedColumns[column as keyof typeof selectedColumns]}
-                      onChange={() => handleColumnToggle(column)}
+                      checked={selectedColumns[column as keyof AMIs]}
+                      onChange={() => handleColumnToggle(column as keyof AMIs)}
                     />
                     {column}
                   </label>
@@ -150,8 +164,8 @@ const RelatoryAMIs: React.FC<RelatoryAMIsProps> = ({ data }) => {
               ))}
             </ModalBody>
             <ModalFooter>
-              <PaginationButton onClick={revertFilters}>Reverter</PaginationButton>
-              <PaginationButton onClick={applyFilters}>Aplicar</PaginationButton>
+              <FilterButton onClick={revertFilters}>Reverter</FilterButton>
+              <FilterButton onClick={applyFilters}>Aplicar</FilterButton>
             </ModalFooter>
           </ModalContent>
         </Modal>

@@ -8,23 +8,68 @@ export const Container = styled.div`
 `;
 
 export const TableWrapper = styled.div`
-  height:600px;
   margin:20px;
-  overflow-y: auto;
-  overflow-x: auto;
   border-radius: 16px;
   box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.1);
-  background-color: #ffffff; 
+  background-color: #ffffff;
+
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #cccc #ffff;
+
+  ::-webkit-scrollbar-track {
+    background: #e0e0e0; /* Cor do fundo da barra */
+    border-radius: 16px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #cccc; /* Cor do scroll */
+    border-radius: 16px;
+    border: 2px solid #ffffff; /* Dá um efeito "separado" */
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #888; /* Cor ao passar o mouse */
+  }
+  
+    @media (max-width: 1200px) {
+    width: 60%;
+  }
+  
+      @media (max-width: 770px) {
+    width: 40%;
+  }
+  
 `;
 
 export const Table = styled.table`
+  width:100%;
   margin:20px;
   margin-left:40px;
   margin-top:0px;
   max-height:400px;
   border: none;
   border-collapse: collapse;
-  background-color: #ffffff; 
+  background-color: #ffffff;
+  overflow-x: auto; 
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #cccc #ffff;
+
+  ::-webkit-scrollbar-track {
+    background: #e0e0e0; /* Cor do fundo da barra */
+    border-radius: 16px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #cccc; /* Cor do scroll */
+    border-radius: 16px;
+    border: 2px solid #ffffff; /* Dá um efeito "separado" */
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #888; /* Cor ao passar o mouse */
+  }
 `;
 
 export const Th = styled.th`
@@ -85,25 +130,21 @@ export const PaginationContainer = styled.div`
   justify-content: center; 
   align-items: center;
   gap: 10px;
+  color:#bbbb;
+  padding-bottom:10px;
 `;
 
 export const PaginationButton = styled.button`
-  margin: 0 5px;
-  padding: 5px 10px;
+  background: none;
   border: none;
-  background-color:rgb(0, 0, 0);
-  color: white;
   cursor: pointer;
-  border-radius: 5px;
-  transition: 0.3s ease-in-out;
-
-  &:hover {
-    background-color:rgb(0, 0, 0);
-  }
+  padding: 5px;
+  display: flex;
+  align-items: center;
 
   &:disabled {
-    background-color: #bbb;
     cursor: not-allowed;
+    opacity: 0.5;
   }
 `;
 
@@ -113,13 +154,22 @@ margin-left:40px;
 `
 
 export const ButtonSelectColumn = styled.button`
-border: 1px solid #ddd;
-background-color: #ffffff; 
-height:25px;
-padding:5px;
-cursor:pointer;
+  cursor: pointer;
+  padding-left: 5px;
+  background: none;
+  border: none;
+  align-items: center;
 
-`
+  img {
+    width: 15px;
+    height: 15px;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+`;
 
 export const Modal = styled.div`
   z-index: 9999;
@@ -168,3 +218,20 @@ export const Checkbox = styled.input`
   margin-right: 10px;
 `;
 
+export const FilterButton = styled.button`
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s ease-in-out;
+  
+  &:hover {
+    filter: grayscale(100%);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+`;
