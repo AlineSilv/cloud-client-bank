@@ -9,6 +9,8 @@ font-size: 16px;
 export const RowHeader = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const BoxLogo = styled.div`
@@ -31,51 +33,24 @@ filter: grayscale(100%);
 `;
 
 export const HeaderMenuBar =styled.div`
-  width:73%;
   align-items: center;
   display: flex;
   white-space: nowrap;
 
   @media (max-width: 1200px) {
-    display:flex;
-    width: 70%;
-    display: flex;
-    align-items: center;
-    padding-left: 80px;
-    order: 2;
-    }
-  
-    @media (max-width: 800px) {
-    display:flex;
-    max-width: 50%;
-    display: flex;
-    align-items: center;
-    order: 2;
-    }
-
-    @media (max-width: 700px) {
-    display:flex;
-    max-width: 30%;
-    display: flex;
-    align-items: center;
     order: 2;
     }
 `;
 
-export const LabelInstruct = styled.p`
-  color: gray;
-  padding-left: 15%;
-  padding-right: 4%;
-`;
 
 export const MenuConfig = styled.div`
 margin-top:20px;
+margin-left: -20%;
 padding-bottom: 2%;
 display: flex;
 flex-direction: row-reverse;
 justify-content: flex-end; 
 align-items: center;
-text-align: center;
 
 @media (max-width: 1440px) {
 order: 2;

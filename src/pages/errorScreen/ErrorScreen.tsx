@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   ContentScreen,
@@ -15,7 +14,7 @@ import {
   BoxDescription,
   ButtonContainer,
   Button
-} from './ErrorScreenStyles.ts';
+} from './ErrorScreenStyles';
 
 function Error() {
   const navigate = useNavigate();

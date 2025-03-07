@@ -5,7 +5,7 @@ import {
   ImgEmpty,
   BoxDescription,
   Description
-} from './EmptyRelatoryStyles.ts'
+} from './EmptyRelatoryStyles'
 
 function EmptyRelatory() {
 

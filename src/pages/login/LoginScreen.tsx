@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { fakeAuth } from './loginscreenservice/authService.ts';
+import { fakeAuth } from './loginscreenservice/authService';
 import { useNavigate } from 'react-router-dom';
 import {
   BoxLogo,
@@ -20,7 +20,7 @@ import {
   AsideTarja,
   ImgAsideLogin,
   Content
-} from './LoginStyles.ts';
+} from './LoginStyles';
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState('');

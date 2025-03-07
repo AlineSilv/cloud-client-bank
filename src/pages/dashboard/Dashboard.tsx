@@ -1,6 +1,6 @@
-import React,  { useState, useEffect, lazy, Suspense }  from 'react';
+import { useState, useEffect, lazy, Suspense }  from 'react';
 import { useNavigate } from 'react-router-dom';
-import LogoutModal from '../login/LogoutModal.tsx'
+import LogoutModal from '../login/LogoutModal'
 import {
   ContentScreen,
   RowHeader,
@@ -13,18 +13,18 @@ import {
   MenuConfig,
   IconMenuNotification,
   RelatoryContent,
-} from "./DashboardStyles.ts";
+} from "./DashboardStyles";
 
 const relatoryComponents: Record<string, any> = {
-  "#": lazy(() => import("../relatory/EmptyRelatory.tsx")),
-  "AMIs": lazy(() => import("../relatory/table/RelatoryAMIs.tsx")),
-  "EBSSnapshots": lazy(() => import("../relatory/table/RelatoryEBSSnapshots.tsx")),
-  "EBS": lazy(() => import("../relatory/table/RelatoryEBSVolumes.tsx")),
-  "EC2": lazy(() => import("../relatory/table/RelatoryEC2Instances.tsx")),
-  "ElasticIP": lazy(() => import("../relatory/table/RelatoryElasticIPs.tsx")),
-  "RDS": lazy(() => import("../relatory/table/RelatoryRDSInstances.tsx")),
-  "RDSSnapshots": lazy(() => import("../relatory/table/RelatoryRDSSnapshots.tsx")),
-  "S3": lazy(() => import("../relatory/table/RelatoryS3Buckets.tsx")),
+  "#": lazy(() => import("../relatory/EmptyRelatory")),
+  "AMIs": lazy(() => import("../relatory/table/RelatoryAMIs")),
+  "EBSSnapshots": lazy(() => import("../relatory/table/RelatoryEBSSnapshots")),
+  "EBS": lazy(() => import("../relatory/table/RelatoryEBSVolumes")),
+  "EC2": lazy(() => import("../relatory/table/RelatoryEC2Instances")),
+  "ElasticIP": lazy(() => import("../relatory/table/RelatoryElasticIPs")),
+  "RDS": lazy(() => import("../relatory/table/RelatoryRDSInstances")),
+  "RDSSnapshots": lazy(() => import("../relatory/table/RelatoryRDSSnapshots")),
+  "S3": lazy(() => import("../relatory/table/RelatoryS3Buckets")),
 };
 
 function Dashboard() {

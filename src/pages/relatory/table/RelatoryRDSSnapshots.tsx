@@ -9,7 +9,7 @@ import {
   TableWrapper,
   Th,
   Td
-} from "./TableStyles.ts";
+} from "./TableStyles";
 
 interface RDSSnapshots {
   Account: string;

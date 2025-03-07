@@ -1,6 +1,6 @@
 import React,  { useState, useEffect, lazy, Suspense }  from 'react';
 import { useNavigate } from 'react-router-dom';
-import LogoutModal from '../login/LogoutModal.tsx'
+import LogoutModal from '../login/LogoutModal'
 import {
   ContentScreen,
   RowHeader,
@@ -13,18 +13,18 @@ import {
   MenuConfig,
   IconLogout,
   RelatoryContent,
-} from "./RelatoryStyles.ts";
+} from "./RelatoryStyles";
 
 const relatoryComponents: Record<string, any> = {
-  "#": lazy(() => import("./EmptyRelatory.tsx")),
-  "AMIs": lazy(() => import("./table/RelatoryAMIs.tsx")),
-  "EBSSnapshots": lazy(() => import("./table/RelatoryEBSSnapshots.tsx")),
-  "EBS": lazy(() => import("./table/RelatoryEBSVolumes.tsx")),
-  "EC2": lazy(() => import("./table/RelatoryEC2Instances.tsx")),
-  "ElasticIP": lazy(() => import("./table/RelatoryElasticIPs.tsx")),
-  "RDS": lazy(() => import("./table/RelatoryRDSInstances.tsx")),
-  "RDSSnapshots": lazy(() => import("./table/RelatoryRDSSnapshots.tsx")),
-  "S3": lazy(() => import("./table/RelatoryS3Buckets.tsx")),
+  "#": lazy(() => import("./EmptyRelatory")),
+  "AMIs": lazy(() => import("./table/RelatoryAMIs")),
+  "EBSSnapshots": lazy(() => import("./table/RelatoryEBSSnapshots")),
+  "EBS": lazy(() => import("./table/RelatoryEBSVolumes")),
+  "EC2": lazy(() => import("./table/RelatoryEC2Instances")),
+  "ElasticIP": lazy(() => import("./table/RelatoryElasticIPs")),
+  "RDS": lazy(() => import("./table/RelatoryRDSInstances")),
+  "RDSSnapshots": lazy(() => import("./table/RelatoryRDSSnapshots")),
+  "S3": lazy(() => import("./table/RelatoryS3Buckets")),
 };
 
 function Relatory() {
@@ -75,7 +75,8 @@ function Relatory() {
       <RowHeader>
         <BoxLogo><Logo src={`${process.env.PUBLIC_URL}/assets/TelaLogin/logo-cloud-client.png`} alt="logo"
             style={{ cursor: "pointer" }} 
-            onClick={() => navigate("/home")}/></BoxLogo>
+            onClick={() => navigate("/home")}/>
+        </BoxLogo>
         <HeaderMenuBar>
           <LabelInstruct> Instâncias / <LabelInstructBlack>{selectedInstance || ""}</LabelInstructBlack></LabelInstruct>
           <InstanceSelect value={selectedInstance} onChange={(e) => handleFilterChange(e.target.value)}> 

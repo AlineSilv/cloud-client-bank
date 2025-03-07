@@ -1,11 +1,10 @@
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from './pages/login/LoginScreen.tsx';
-import Register from './pages/registerScreen/RegisterScreen.tsx';
-import Error from './pages/errorScreen/ErrorScreen.tsx';
-import Home from './pages/home/Home.tsx'
-import Dashboard from './pages/dashboard/Dashboard.tsx'
-import Relatory from './pages/relatory/Relatory.tsx'
+import Login from './pages/login/LoginScreen';
+import Register from './pages/registerScreen/RegisterScreen';
+import Error from './pages/errorScreen/ErrorScreen';
+import Home from './pages/home/Home'
+import Dashboard from './pages/dashboard/Dashboard'
+import Relatory from './pages/relatory/Relatory'
 const basename = window.location.hostname === 'localhost' ? '' : '/cloud-client-bank';
 
 function App() {

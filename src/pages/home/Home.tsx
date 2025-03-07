@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
-import LogoutModal from '../login/LogoutModal.tsx'
+import LogoutModal from '../login/LogoutModal'
 
 import {
   ContentScreen,
@@ -23,7 +23,7 @@ import {
   ButtonContact,
   BoxIconTitle,
   
-} from "./HomeStyles.ts";
+} from "./HomeStyles";
 
 function Home() {
   const [isAsideVisible, setIsAsideVisible] = useState(false);

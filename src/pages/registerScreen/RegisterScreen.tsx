@@ -1,4 +1,3 @@
-import React from 'react';
 import {
     Container,
     ContentAsideForm,
@@ -19,7 +18,7 @@ import {
     TextAccountBold,
     ContentIllustration,
     ImgIllustration
-} from './RegisterScreenStyles.tsx'
+} from './RegisterScreenStyles'
 function Register() {
   return (
     <>
