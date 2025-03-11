@@ -1,15 +1,14 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom'; 
 import Login from './pages/login/LoginScreen';
 import Register from './pages/registerScreen/RegisterScreen';
 import Error from './pages/errorScreen/ErrorScreen';
-import Home from './pages/home/Home'
-import Dashboard from './pages/dashboard/Dashboard'
-import Relatory from './pages/relatory/Relatory'
-const basename = window.location.hostname === 'localhost' ? '' : '/cloud-client-bank';
+import Home from './pages/home/Home';
+import Dashboard from './pages/dashboard/Dashboard';
+import Relatory from './pages/relatory/Relatory';
 
 function App() {
   return (
-    <Router basename={basename}>
+    <Router>
       <Routes>
         {/* Rota para a página Principal */}
         <Route path="/home" element={<Home />} />
@@ -23,11 +22,11 @@ function App() {
         {/* Rota para a página de Dashboard */}
         <Route path="/dashboard" element={<Dashboard />} />
 
-        {/* Rota para a página de Tabela */}
+        {/* Rota para a página de Relatórios */}
         <Route path="/tabela" element={<Relatory />} />
         
         {/* Rota para exibir a página de erro (404) */}
-        <Route path="/*" element={<Error />} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </Router>
   );

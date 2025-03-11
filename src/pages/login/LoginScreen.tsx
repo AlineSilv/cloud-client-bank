@@ -94,7 +94,9 @@ const Login: React.FC = () => {
           <BoxAccount>
             <p>
               <TextAccount>Ainda não possui uma conta? </TextAccount>
-              <TextAccountBold as="a" href="/register">Saiba mais</TextAccountBold>
+              <TextAccountBold as="a" onClick={() => navigate("/register")}>
+                Saiba mais
+              </TextAccountBold>
             </p>
           </BoxAccount>
         </ContainerLogin>

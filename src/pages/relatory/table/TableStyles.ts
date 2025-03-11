@@ -7,12 +7,26 @@ export const Container = styled.div`
   align-items: center;
 `;
 
-export const TableWrapper = styled.div`
+export const ContentTable = styled.div`
   margin:20px;
   border-radius: 16px;
   box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
 
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #cccc #ffff;
+
+  @media (max-width: 1200px) {
+    width: 60%;
+  }
+  
+  @media (max-width: 770px) {
+    width: 40%;
+  }
+`
+
+export const TableWrapper = styled.div`
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: #cccc #ffff;
@@ -32,18 +46,10 @@ export const TableWrapper = styled.div`
     background: #888; /* Cor ao passar o mouse */
   }
   
-    @media (max-width: 1200px) {
-    width: 60%;
-  }
-  
-      @media (max-width: 770px) {
-    width: 40%;
-  }
   
 `;
 
 export const Table = styled.table`
-  width:100%;
   margin:20px;
   margin-left:40px;
   margin-top:0px;
@@ -243,7 +249,7 @@ export const LabelBox = styled.div`
 
 export const ButtonDownload = styled.button`
   cursor: pointer;
-  padding-left: 5px;
+  padding-right: 20px;
   background: none;
   border: none;
   align-items: center;

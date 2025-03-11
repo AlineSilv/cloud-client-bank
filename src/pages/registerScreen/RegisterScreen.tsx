@@ -25,7 +25,7 @@ function Register() {
     <Container>
     <ContentAsideForm>
       <BoxLogo>
-        <ImgLogo style={{ width: 200, height: 200 }} src={`${process.env.PUBLIC_URL}/assets/TelaLogin/logo-cloud-client.png `} alt="Logo" />
+        <ImgLogo style={{ width: 150, height: 100 }} src={`${process.env.PUBLIC_URL}/assets/TelaLogin/logo-cloud-client.png `} alt="Logo" />
       </BoxLogo>
       <BoxForm>
           <BoxInstruct>

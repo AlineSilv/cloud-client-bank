@@ -18,6 +18,7 @@ margin-left:25%;
 
 export const ImgLogo = styled.img`
 width:10%;
+margin-top:20px;
 filter: grayscale(100%);
 `;
 

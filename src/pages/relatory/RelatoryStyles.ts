@@ -136,8 +136,8 @@ export  const AccountSelect = styled.select`
 
 export const MenuConfig = styled.div`
 margin-top:30px;
-padding-bottom: 2%;
 display: flex;
+padding-bottom:4%;
 flex-direction: row-reverse;
 justify-content: flex-end; 
 align-items: center;

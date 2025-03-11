@@ -134,6 +134,7 @@ export const BoxAccount = styled.div`
 
 export const TextAccount = styled.span`
   color:rgb(0, 0, 0);
+  cursor:pointer;
 
   @media (max-width: 768px) {
     text-align: center;
