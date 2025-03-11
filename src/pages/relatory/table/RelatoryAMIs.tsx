@@ -6,6 +6,7 @@ import * as XLSX from "xlsx";
 
 import {
   Container,
+  ContentTable,
   Table,
   Thead,
   Tr,
@@ -123,8 +124,8 @@ const RelatoryAMIs: React.FC<RelatoryAMIsProps> = ({ data }) => {
 
   return (
     <Container>
-      <TableWrapper>
-        <DescriptionBox>
+    <ContentTable>
+    <DescriptionBox>
           <LabelBox>
             <h3>Relatório de AMIs</h3>
             <ButtonDownload type="button" onClick={() => setModalVisibleDownload(true)}>
@@ -146,6 +147,7 @@ const RelatoryAMIs: React.FC<RelatoryAMIsProps> = ({ data }) => {
             </ButtonSelectColumn>
           </p>
         </DescriptionBox>
+      <TableWrapper>
         <Table>
           <Thead>
             <Tr>
@@ -196,7 +198,7 @@ const RelatoryAMIs: React.FC<RelatoryAMIsProps> = ({ data }) => {
           </PaginationContainer>
         )}
       </TableWrapper>
-
+    </ContentTable>
       {/* Modal de Filtro */}
       {modalVisibleFilter && (
         <Modal onClick={() => setModalVisibleFilter(false)}>

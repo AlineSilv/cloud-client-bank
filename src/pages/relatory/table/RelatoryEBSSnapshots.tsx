@@ -1,6 +1,12 @@
 import React, { useState } from "react";
+import { jsPDF } from "jspdf";
+import autoTable from "jspdf-autotable";
+import { saveAs } from "file-saver";
+import * as XLSX from "xlsx";
+
 import {
   Container,
+  ContentTable,
   Table,
   Thead,
   Tr,
@@ -8,7 +14,19 @@ import {
   PaginationButton,
   TableWrapper,
   Th,
-  Td
+  Td,
+  DescriptionBox,
+  ButtonSelectColumn,
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  CloseButton,
+  Checkbox,
+  FilterButton,
+  LabelBox,
+  ButtonDownload
 } from "./TableStyles";
 
 interface EBSSnapshot {
@@ -26,61 +44,209 @@ interface RelatoryEBSSnapshotsProps {
 }
 
 const RelatoryEBSSnapshots: React.FC<RelatoryEBSSnapshotsProps> = ({ data }) => {
-  const itemsPerPage = 15; 
+  const itemsPerPage = 15;
   const [currentPage, setCurrentPage] = useState(1);
+  const [modalVisibleFilter, setModalVisibleFilter] = useState(false);
+  const [modalVisibleDownload, setModalVisibleDownload] = useState(false);
+  const [selectedColumns, setSelectedColumns] = useState({
+    Account: true,
+    Region: true,
+    SnapshotID: true,
+    VolumeID:true,
+    SizeGB: true,
+    StartTime: true,
+    State: true,
+  });
+
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
   const totalPages = Math.ceil(data.length / itemsPerPage);
 
+  const handleColumnToggle = (column: keyof EBSSnapshot) => {
+    setSelectedColumns((prev) => ({
+      ...prev,
+      [column]: !prev[column],
+    }));
+  };
+
+  const applyFilters = () => {
+    setModalVisibleFilter(false);
+  };
+
+  const revertFilters = () => {
+    setSelectedColumns({
+      Account: true,
+      Region: true,
+      SnapshotID: true,
+      VolumeID:true,
+      SizeGB: true,
+      StartTime: true,
+      State: true,
+    });
+    setModalVisibleFilter(false);
+  };
+
+  // Função para exportar os dados para JSON
+  const exportToJSON = () => {
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+    saveAs(blob, "relatorio_ebssnapshots.json");
+  };
+
+  // Função para exportar os dados para PDF
+  const exportToPDF = () => {
+    const doc = new jsPDF();
+    doc.text("Relatório de EBS Snapshots", 20, 20);
+  
+    const tableData = data.map((item) => [
+      item.Account,
+      item.Region,
+      item.SnapshotID,
+      item.VolumeID,
+      item.SizeGB,
+      item.StartTime,
+      item.State,
+    ]);
+  
+    // Chama autoTable corretamente
+    autoTable(doc, {
+      head: [["Account", "Region", "SnapshotID", "VolumeID", "SizeGB", "StartTime", "State"]],
+      body: tableData,
+    });
+  
+    doc.save("relatorio_ebssnapshots.pdf");
+  };
+
+  // Função para exportar os dados para Excel
+  const exportToExcel = () => {
+    const ws = XLSX.utils.json_to_sheet(data);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "EbsSnapshots");
+    XLSX.writeFile(wb, "relatorio_ebssnapshots.xlsx");
+  };
+
   return (
     <Container>
-      <h2>Relatório de EBS Snapshots</h2>
-      <TableWrapper>
-      <Table>
+      <ContentTable>
+        <DescriptionBox>
+          <LabelBox>
+          <h3>Relatório de EBS Snapshots</h3>
+            <ButtonDownload type="button" onClick={() => setModalVisibleDownload(true)}>
+              <img
+                src={`${process.env.PUBLIC_URL}/assets/Navbar/icon-download.png`}
+                style={{ width: 20, height: 20 }}
+                alt="baixar"
+              />
+            </ButtonDownload>
+          </LabelBox>
+          <p>
+            Agrupar por colunas:
+            <ButtonSelectColumn type="button" onClick={() => setModalVisibleFilter(true)}>
+              <img
+                src={`${process.env.PUBLIC_URL}/assets/Navbar/icon-filter.png`}
+                style={{ width: 15, height: 20 }}
+                alt="filtro"
+              />
+            </ButtonSelectColumn>
+          </p>
+        </DescriptionBox>
+        <TableWrapper>
+        <Table>
         <Thead>
           <Tr>
-            <Th>Account</Th>
-            <Th>Region</Th>
-            <Th>Snapshot ID</Th>
-            <Th>Volume ID</Th>
-            <Th>Size (GB)</Th>
-            <Th>Start Time</Th>
-            <Th>State</Th>
+            {selectedColumns.Account && <Th>Account</Th>}
+            {selectedColumns.Region && <Th>Region</Th>}
+            {selectedColumns.SnapshotID && <Th>Snapshot ID</Th>}
+            {selectedColumns.VolumeID && <Th>Volume ID</Th>}
+            {selectedColumns.SizeGB && <Th>Size (GB)</Th>}
+            {selectedColumns.StartTime && <Th>Start Time</Th>}
+            {selectedColumns.State && <Th>State</Th>}
           </Tr>
         </Thead>
-        <tbody>
-          {currentItems.map((snapshot) => (
-            <Tr key={snapshot.SnapshotID}>
-              <Td>{snapshot.Account}</Td>
-              <Td>{snapshot.Region}</Td>
-              <Td>{snapshot.SnapshotID}</Td>
-              <Td>{snapshot.VolumeID}</Td>
-              <Td>{snapshot.SizeGB}</Td>
-              <Td>{new Date(snapshot.StartTime).toLocaleDateString()}</Td>
-              <Td>{snapshot.State}</Td>
-            </Tr>
-          ))}
-        </tbody>
-      </Table>
-      </TableWrapper>
-      {totalPages > 1 && (
-        <PaginationContainer>
-          <PaginationButton 
-            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))} 
-            disabled={currentPage === 1}
-          >
-            Anterior
-          </PaginationButton>
-          <span>Página {currentPage} de {totalPages}</span>
-          <PaginationButton 
-            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))} 
-            disabled={currentPage === totalPages}
-          >
-            Próximo
-          </PaginationButton>
-        </PaginationContainer>
-      )}
+          <tbody>
+            {currentItems.map((snapshot) => (
+              <Tr key={snapshot.SnapshotID}>
+                {selectedColumns.Account && <Td>{snapshot.Account}</Td>}
+                {selectedColumns.Region && <Td>{snapshot.Region}</Td>}
+                {selectedColumns.SnapshotID && <Td>{snapshot.SnapshotID}</Td>}
+                {selectedColumns.VolumeID && <Td>{snapshot.VolumeID}</Td>}
+                {selectedColumns.SizeGB && <Td>{snapshot.SizeGB}</Td>}
+                {selectedColumns.StartTime && <Td>{new Date(snapshot.StartTime).toLocaleDateString()}</Td>}
+                {selectedColumns.State && <Td>{snapshot.State}</Td>}
+              </Tr>
+            ))}
+          </tbody>
+        </Table>
+        {totalPages > 1 && (
+          <PaginationContainer>
+            <PaginationButton
+              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+              disabled={currentPage === 1}
+            >
+              <img
+                src={`${process.env.PUBLIC_URL}/assets/Navbar/icon-back.png`}
+                style={{ width: 15, height: 20 }}
+                alt="voltar"
+              />
+            </PaginationButton>
+            <span>{currentPage}&nbsp;&nbsp;de&nbsp;&nbsp;{totalPages}</span>
+            <PaginationButton
+              onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+              disabled={currentPage === totalPages}
+            >
+              <img
+                src={`${process.env.PUBLIC_URL}/assets/Navbar/icon-back.png`}
+                style={{ width: 15, height: 20, transform: "scaleX(-1)" }}
+                alt="avançar"
+              />
+            </PaginationButton>
+          </PaginationContainer>
+        )}
+        </TableWrapper>
+      </ContentTable>
+      {/* Modal de Filtro */}
+        {modalVisibleFilter && (
+          <Modal onClick={() => setModalVisibleFilter(false)}>
+            <ModalContent onClick={(e) => e.stopPropagation()}>
+              <ModalHeader>
+                <h3>Seleção de Filtros</h3>
+                <CloseButton onClick={() => setModalVisibleFilter(false)}>×</CloseButton>
+              </ModalHeader>
+              <ModalBody>
+                {Object.keys(selectedColumns).map((column) => (
+                  <div key={column}>
+                    <Checkbox
+                      type="checkbox"
+                      checked={selectedColumns[column as keyof EBSSnapshot]}
+                      onChange={() => handleColumnToggle(column as keyof EBSSnapshot)}
+                    />
+                    <label>{column}</label>
+                  </div>
+                ))}
+              </ModalBody>
+              <ModalFooter>
+                <FilterButton onClick={applyFilters}>Aplicar Filtros</FilterButton>
+                <FilterButton onClick={revertFilters}>Reverter Filtros</FilterButton>
+              </ModalFooter>
+            </ModalContent>
+          </Modal>
+        )}
+      {/* Modal de Download */}
+        {modalVisibleDownload && (
+          <Modal onClick={() => setModalVisibleDownload(false)}>
+            <ModalContent onClick={(e) => e.stopPropagation()}>
+              <ModalHeader>
+                <h3>Seleção de Formato</h3>
+                <CloseButton onClick={() => setModalVisibleDownload(false)}>×</CloseButton>
+              </ModalHeader>
+              <ModalBody>
+                <FilterButton onClick={exportToJSON}>Exportar como JSON</FilterButton>
+                <FilterButton onClick={exportToPDF}>Exportar como PDF</FilterButton>
+                <FilterButton onClick={exportToExcel}>Exportar como Excel</FilterButton>
+              </ModalBody>
+            </ModalContent>
+          </Modal>
+        )}
     </Container>
   );
 };
