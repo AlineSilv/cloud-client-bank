@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import {
     Container,
     ContentAsideForm,
@@ -20,6 +21,7 @@ import {
     ImgIllustration
 } from './RegisterScreenStyles'
 function Register() {
+  const navigate = useNavigate();
   return (
     <>
     <Container>
@@ -68,7 +70,7 @@ function Register() {
             <BoxAccount>
               <p>
                 <TextAccount>Já possui uma conta? </TextAccount>
-                <TextAccountBold as="a" href="/">Logar</TextAccountBold>
+                <TextAccountBold as="a" onClick={() => navigate("/")}/>
               </p>
             </BoxAccount>
           </form>
