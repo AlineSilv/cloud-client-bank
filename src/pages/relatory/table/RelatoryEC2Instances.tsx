@@ -158,6 +158,7 @@ const RelatoryEC2Instances: React.FC<{ data: EC2[] }> = ({ data }) => {
         </DescriptionBox>
       <h3>Dados Gerais</h3>
       <TableWrapper>
+      <div style={{ overflowX: 'auto', maxWidth: '100%' }}>
         <Table>
           <Thead>
             <Tr>
@@ -211,12 +212,14 @@ const RelatoryEC2Instances: React.FC<{ data: EC2[] }> = ({ data }) => {
             </PaginationButton>
           </PaginationContainer>
         )}
+      </div>
       </TableWrapper>
       </ContentTable>
       <ContentTable>
       {/* Segunda Tabela: Tags */}
       <h3>Informações de Tags</h3>
       <TableWrapper>
+        <div style={{ overflowX: 'auto', maxWidth: '100%' }}>
         <Table>
           <Thead>
             <Tr>
@@ -286,6 +289,7 @@ const RelatoryEC2Instances: React.FC<{ data: EC2[] }> = ({ data }) => {
             </PaginationButton>
           </PaginationContainer>
         )}
+      </div>
       </TableWrapper>
       </ContentTable>
       {/* Modal de Filtro */}
