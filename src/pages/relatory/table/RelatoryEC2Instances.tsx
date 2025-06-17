@@ -132,8 +132,24 @@ const RelatoryEC2Instances: React.FC<{ data: EC2[] }> = ({ data }) => {
     };
 
   return (
-    <Container>
-      <ContentTable>
+    <Container 
+      style={{ 
+        width: '100%', 
+        maxWidth: '100vw', 
+        overflow: 'hidden',
+        padding: '20px',
+        boxSizing: 'border-box'
+      }}
+    >
+      {/* PRIMEIRA TABELA - DADOS GERAIS */}
+      <ContentTable 
+        style={{ 
+          width: '100%', 
+          maxWidth: '100%',
+          marginBottom: '30px',
+          overflow: 'hidden'
+        }}
+      >
         <DescriptionBox>
           <LabelBox>
           <h3>Relatório de EC2 Instances</h3>
@@ -156,38 +172,58 @@ const RelatoryEC2Instances: React.FC<{ data: EC2[] }> = ({ data }) => {
             </ButtonSelectColumn>
           </p>
         </DescriptionBox>
-      <h3>Dados Gerais</h3>
-      <TableWrapper>
-        <Table>
-          <Thead>
-            <Tr>
-            {selectedColumns.Account && <Th>Account</Th>}
-            {selectedColumns.Region && <Th>Region</Th>}
-            {selectedColumns.InstanceID && <Th>Instance ID</Th>}
-            {selectedColumns.State && <Th>State</Th>}
-            {selectedColumns.InstanceType && <Th>Instance Type</Th>}
-            {selectedColumns.ImageID && <Th>Image ID</Th>}
-            {selectedColumns.OperatingSystem && <Th>Operating System</Th>}
-            {selectedColumns.Volumes && <Th>Volumes</Th>}
-            </Tr>
-          </Thead>
-          <tbody>
-            {currentItems.map(ec2 => (
-              <Tr key={ec2.InstanceID}>
-                {selectedColumns.Account && <Td>{ec2.Account}</Td>}
-                {selectedColumns.Region && <Td>{ec2.Region}</Td>}
-                {selectedColumns.InstanceID && <Td>{ec2.InstanceID}</Td>}
-                {selectedColumns.State && <Td>{ec2.State}</Td>}
-                {selectedColumns.InstanceType && <Td>{ec2.InstanceType}</Td>}
-                {selectedColumns.ImageID && <Td>{ec2.ImageID}</Td>}
-                {selectedColumns.OperatingSystem && <Td>{ec2.OperatingSystem}</Td>}
-                {selectedColumns.Volumes && <Td>{ec2.Volumes.join(", ") || "N/A"}</Td>}
+        
+        <h3 style={{ margin: '20px 0 10px 0' }}>Dados Gerais</h3>
+        
+        <TableWrapper 
+          style={{ 
+            width: '100%', 
+            maxWidth: '100%',
+            overflowX: 'auto',
+            overflowY: 'visible',
+            border: '1px solid #ddd',
+            borderRadius: '8px'
+          }}
+        >
+          <Table 
+            style={{ 
+              minWidth: '800px', 
+              width: '100%',
+              borderCollapse: 'collapse',
+              margin: 0
+            }}
+          >
+            <Thead>
+              <Tr>
+              {selectedColumns.Account && <Th style={{ minWidth: '120px', whiteSpace: 'nowrap' }}>Account</Th>}
+              {selectedColumns.Region && <Th style={{ minWidth: '100px', whiteSpace: 'nowrap' }}>Region</Th>}
+              {selectedColumns.InstanceID && <Th style={{ minWidth: '200px', whiteSpace: 'nowrap' }}>Instance ID</Th>}
+              {selectedColumns.State && <Th style={{ minWidth: '80px', whiteSpace: 'nowrap' }}>State</Th>}
+              {selectedColumns.InstanceType && <Th style={{ minWidth: '120px', whiteSpace: 'nowrap' }}>Instance Type</Th>}
+              {selectedColumns.ImageID && <Th style={{ minWidth: '200px', whiteSpace: 'nowrap' }}>Image ID</Th>}
+              {selectedColumns.OperatingSystem && <Th style={{ minWidth: '150px', whiteSpace: 'nowrap' }}>Operating System</Th>}
+              {selectedColumns.Volumes && <Th style={{ minWidth: '200px', whiteSpace: 'nowrap' }}>Volumes</Th>}
               </Tr>
-            ))}
-          </tbody>
-        </Table>
+            </Thead>
+            <tbody>
+              {currentItems.map(ec2 => (
+                <Tr key={ec2.InstanceID}>
+                  {selectedColumns.Account && <Td style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '120px' }}>{ec2.Account}</Td>}
+                  {selectedColumns.Region && <Td style={{ whiteSpace: 'nowrap' }}>{ec2.Region}</Td>}
+                  {selectedColumns.InstanceID && <Td style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '200px' }} title={ec2.InstanceID}>{ec2.InstanceID}</Td>}
+                  {selectedColumns.State && <Td style={{ whiteSpace: 'nowrap' }}>{ec2.State}</Td>}
+                  {selectedColumns.InstanceType && <Td style={{ whiteSpace: 'nowrap' }}>{ec2.InstanceType}</Td>}
+                  {selectedColumns.ImageID && <Td style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '200px' }} title={ec2.ImageID}>{ec2.ImageID}</Td>}
+                  {selectedColumns.OperatingSystem && <Td style={{ whiteSpace: 'nowrap' }}>{ec2.OperatingSystem}</Td>}
+                  {selectedColumns.Volumes && <Td style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '200px' }} title={ec2.Volumes.join(", ") || "N/A"}>{ec2.Volumes.join(", ") || "N/A"}</Td>}
+                </Tr>
+              ))}
+            </tbody>
+          </Table>
+        </TableWrapper>
+        
         {totalPages > 1 && (
-          <PaginationContainer>
+          <PaginationContainer style={{ marginTop: '20px' }}>
             <PaginationButton
               onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
               disabled={currentPage === 1}
@@ -211,58 +247,83 @@ const RelatoryEC2Instances: React.FC<{ data: EC2[] }> = ({ data }) => {
             </PaginationButton>
           </PaginationContainer>
         )}
-      </TableWrapper>
       </ContentTable>
-      <ContentTable>
-      {/* Segunda Tabela: Tags */}
-      <h3>Informações de Tags</h3>
-      <TableWrapper>
-        <Table>
-          <Thead>
-            <Tr>
-            {selectedColumns.Account && <Th>Account</Th>}
-              <Th>Name</Th>
-              <Th>swoMonitor</Th>
-              <Th>Billing-MagProd</Th>
-              <Th>swoRiskClass</Th>
-              <Th>map-migrated</Th>
-              <Th>swoBackup</Th>
-              <Th>swoPatch</Th>
-              <Th>Shutdown</Th>
-              <Th>aws:cloudformation:stack-name</Th>
-              <Th>aws:cloudformation:stack-id</Th>
-              <Th>aws:cloudformation:logical-id</Th>
-              <Th>AWSApplicationMigrationServiceManaged</Th>
-              <Th>aws:ec2launchtemplate:id</Th>
-              <Th>mgn.amazonaws.com-job</Th>
-              <Th>observacao</Th>
-            </Tr>
-          </Thead>
-          <tbody>
-            {currentItems.map(ec2 => (
-              <Tr key={ec2.InstanceID}>
-                {selectedColumns.Account && <Td>{ec2.Account}</Td>}
-                <Td>{extractTagValue(ec2.Tags, "Name")}</Td>
-                <Td>{extractTagValue(ec2.Tags, "swoMonitor")}</Td>
-                <Td>{extractTagValue(ec2.Tags, "Billing-MagProd")}</Td>
-                <Td>{extractTagValue(ec2.Tags, "swoRiskClass")}</Td>
-                <Td>{extractTagValue(ec2.Tags, "map-migrated")}</Td>
-                <Td>{extractTagValue(ec2.Tags, "swoBackup")}</Td>
-                <Td>{extractTagValue(ec2.Tags, "swoPatch")}</Td>
-                <Td>{extractTagValue(ec2.Tags, "Shutdown")}</Td>
-                <Td>{extractTagValue(ec2.Tags, "aws:cloudformation:stack-name")}</Td>
-                <Td>{extractTagValue(ec2.Tags, "aws:cloudformation:stack-id")}</Td>
-                <Td>{extractTagValue(ec2.Tags, "aws:cloudformation:logical-id")}</Td>
-                <Td>{extractTagValue(ec2.Tags, "AWSApplicationMigrationServiceManaged")}</Td>
-                <Td>{extractTagValue(ec2.Tags, "aws:ec2launchtemplate:id")}</Td>
-                <Td>{extractTagValue(ec2.Tags, "mgn.amazonaws.com-job")}</Td>
-                <Td>{extractTagValue(ec2.Tags, "observacao")}</Td>
+
+      {/* SEGUNDA TABELA - TAGS */}
+      <ContentTable 
+        style={{ 
+          width: '100%', 
+          maxWidth: '100%',
+          overflow: 'hidden'
+        }}
+      >
+        <h3 style={{ margin: '20px 0 10px 0' }}>Informações de Tags</h3>
+        
+        <TableWrapper 
+          style={{ 
+            width: '100%', 
+            maxWidth: '100%',
+            overflowX: 'auto',
+            overflowY: 'visible',
+            border: '1px solid #ddd',
+            borderRadius: '8px'
+          }}
+        >
+          <Table 
+            style={{ 
+              minWidth: '1400px', 
+              width: '100%',
+              borderCollapse: 'collapse',
+              margin: 0
+            }}
+          >
+            <Thead>
+              <Tr>
+              {selectedColumns.Account && <Th style={{ minWidth: '100px', whiteSpace: 'nowrap' }}>Account</Th>}
+                <Th style={{ minWidth: '150px', whiteSpace: 'nowrap' }}>Name</Th>
+                <Th style={{ minWidth: '100px', whiteSpace: 'nowrap' }}>swoMonitor</Th>
+                <Th style={{ minWidth: '120px', whiteSpace: 'nowrap' }}>Billing-MagProd</Th>
+                <Th style={{ minWidth: '100px', whiteSpace: 'nowrap' }}>swoRiskClass</Th>
+                <Th style={{ minWidth: '100px', whiteSpace: 'nowrap' }}>map-migrated</Th>
+                <Th style={{ minWidth: '100px', whiteSpace: 'nowrap' }}>swoBackup</Th>
+                <Th style={{ minWidth: '100px', whiteSpace: 'nowrap' }}>swoPatch</Th>
+                <Th style={{ minWidth: '100px', whiteSpace: 'nowrap' }}>Shutdown</Th>
+                <Th style={{ minWidth: '200px', whiteSpace: 'nowrap' }}>aws:cloudformation:stack-name</Th>
+                <Th style={{ minWidth: '200px', whiteSpace: 'nowrap' }}>aws:cloudformation:stack-id</Th>
+                <Th style={{ minWidth: '200px', whiteSpace: 'nowrap' }}>aws:cloudformation:logical-id</Th>
+                <Th style={{ minWidth: '250px', whiteSpace: 'nowrap' }}>AWSApplicationMigrationServiceManaged</Th>
+                <Th style={{ minWidth: '200px', whiteSpace: 'nowrap' }}>aws:ec2launchtemplate:id</Th>
+                <Th style={{ minWidth: '150px', whiteSpace: 'nowrap' }}>mgn.amazonaws.com-job</Th>
+                <Th style={{ minWidth: '120px', whiteSpace: 'nowrap' }}>observacao</Th>
               </Tr>
-            ))}
-          </tbody>
-        </Table>
+            </Thead>
+            <tbody>
+              {currentItems.map(ec2 => (
+                <Tr key={`tags-${ec2.InstanceID}`}>
+                  {selectedColumns.Account && <Td style={{ whiteSpace: 'nowrap' }}>{ec2.Account}</Td>}
+                  <Td style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '150px' }} title={extractTagValue(ec2.Tags, "Name")}>{extractTagValue(ec2.Tags, "Name")}</Td>
+                  <Td style={{ whiteSpace: 'nowrap' }}>{extractTagValue(ec2.Tags, "swoMonitor")}</Td>
+                  <Td style={{ whiteSpace: 'nowrap' }}>{extractTagValue(ec2.Tags, "Billing-MagProd")}</Td>
+                  <Td style={{ whiteSpace: 'nowrap' }}>{extractTagValue(ec2.Tags, "swoRiskClass")}</Td>
+                  <Td style={{ whiteSpace: 'nowrap' }}>{extractTagValue(ec2.Tags, "map-migrated")}</Td>
+                  <Td style={{ whiteSpace: 'nowrap' }}>{extractTagValue(ec2.Tags, "swoBackup")}</Td>
+                  <Td style={{ whiteSpace: 'nowrap' }}>{extractTagValue(ec2.Tags, "swoPatch")}</Td>
+                  <Td style={{ whiteSpace: 'nowrap' }}>{extractTagValue(ec2.Tags, "Shutdown")}</Td>
+                  <Td style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '200px' }} title={extractTagValue(ec2.Tags, "aws:cloudformation:stack-name")}>{extractTagValue(ec2.Tags, "aws:cloudformation:stack-name")}</Td>
+                  <Td style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '200px' }} title={extractTagValue(ec2.Tags, "aws:cloudformation:stack-id")}>{extractTagValue(ec2.Tags, "aws:cloudformation:stack-id")}</Td>
+                  <Td style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '200px' }} title={extractTagValue(ec2.Tags, "aws:cloudformation:logical-id")}>{extractTagValue(ec2.Tags, "aws:cloudformation:logical-id")}</Td>
+                  <Td style={{ whiteSpace: 'nowrap' }}>{extractTagValue(ec2.Tags, "AWSApplicationMigrationServiceManaged")}</Td>
+                  <Td style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '200px' }} title={extractTagValue(ec2.Tags, "aws:ec2launchtemplate:id")}>{extractTagValue(ec2.Tags, "aws:ec2launchtemplate:id")}</Td>
+                  <Td style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '150px' }} title={extractTagValue(ec2.Tags, "mgn.amazonaws.com-job")}>{extractTagValue(ec2.Tags, "mgn.amazonaws.com-job")}</Td>
+                  <Td style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '120px' }} title={extractTagValue(ec2.Tags, "observacao")}>{extractTagValue(ec2.Tags, "observacao")}</Td>
+                </Tr>
+              ))}
+            </tbody>
+          </Table>
+        </TableWrapper>
+        
         {totalPages > 1 && (
-          <PaginationContainer>
+          <PaginationContainer style={{ marginTop: '20px' }}>
             <PaginationButton
               onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
               disabled={currentPage === 1}
@@ -286,8 +347,8 @@ const RelatoryEC2Instances: React.FC<{ data: EC2[] }> = ({ data }) => {
             </PaginationButton>
           </PaginationContainer>
         )}
-      </TableWrapper>
       </ContentTable>
+
       {/* Modal de Filtro */}
       {modalVisibleFilter && (
         <Modal onClick={() => setModalVisibleFilter(false)}>

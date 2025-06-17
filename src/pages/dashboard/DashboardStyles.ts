@@ -173,3 +173,14 @@ export const RelatoryContent = styled.div`
   margin-top: 0em;
   width: auto;
 `;
+
+export const ToggleButton = styled.button`
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  `;
